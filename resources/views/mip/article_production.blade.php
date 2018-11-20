@@ -26,15 +26,15 @@
                     <div class="chanpin_js1">
                         <strong class="tit">产品信息</strong>
                         <div class="chanpin_js2">
-                            <p>产品类型：<a href="/{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('real_path')}}/" title="{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('typename')}}">{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('typename')}}</a> &gt;
-                                <a href="/{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('real_path')}}/" title="{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}">{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}</a> &gt;
+                            <p>产品类型：<a href="/index.php/{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('real_path')}}/" title="{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('typename')}}">{{\App\AdminModel\Arctype::where('reid',$thisarticleinfos->arctype->reid)->value('typename')}}</a> &gt;
+                                <a href="/index.php/{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('real_path')}}/" title="{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}">{{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}</a> &gt;
                             </p>
                             <p>发布时间：{{date('Y-m-d',strtotime($thisarticleinfos->created_at))}}</p>
                             <p>供应商：@if(isset($thisbrandinfo->brandgroup)) {{$thisbrandinfo->brandgroup}} @endif   </p>
 
-                            <p>{{$thisarticleinfos->pdintr}}</p>
+                            <p>{!! $thisarticleinfos->body !!}</p>
                         </div>
-                        <span><a href="#msg" class="cc_button1" title="">我要代理</a>@if(\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('id')) <a href="/brand/{{$thisarticleinfos->brandid}}/" class="cc_button2" title="">进入品牌网站</a> @endif</span>
+                        <span><a href="#msg" class="cc_button1" title="">我要代理</a>@if(\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('id')) <a href="/index.php/brand/{{$thisarticleinfos->brandid}}/" class="cc_button2" title="">进入品牌网站</a> @endif</span>
                     </div>
                 </div>
                 <div class="shuoming">
@@ -56,20 +56,17 @@
                 <div class="chanpin_xg">
                     <h2 class="xmjs_bt">相关产品推荐</h2>
                     <div id="slide-box">
-
-                        <div class="slide-content" id="J_slide">
-                            <div class="wrap swiper-container">
-                                <ul class="swiper-wrapper" >
+                        <div class="lunbo">
+                            <div class="swiper-container">
+                                <mip-carousel autoplay  defer="5000" layout="responsive" width="730"  height="304">
                                     @foreach($cproductions as $cproduction)
-                                        <li class="swiper-slide"><span><a href="/item/{{$cproduction->id}}/" target="_self"><mip-img src="{{$cproduction->litpic}}" title="{{$cproduction->productionname}}"></mip-img></a></span></li>
+                                        <li class="swiper-slide"><span><a href="/index.php/item/{{$cproduction->id}}/" target="_self"><mip-img src="{{$cproduction->litpic}}" title="{{$cproduction->productionname}}"></mip-img></a></span></li>
                                     @endforeach
-                                </ul>
-                                <div class="swiper-pagination"></div>
+                                </mip-carousel>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         @include('mip.liuyan')
@@ -80,11 +77,11 @@
                     <div class="item7content">
                         @foreach($productionlists as $productionlist)
                             <div class="item7list">
-                                <a href="/item/{{$productionlist->id}}/">
+                                <a href="/index.php/news/{{$productionlist->id}}/">
                                     <div class="left fl">
                                         <div class="lefttitle">{{$productionlist->title}}</div>
                                         <div class="text">
-                                            <div class="message">来源：中国休闲食品加盟网</div>
+                                            <div class="message">来源：树人教育加盟网</div>
                                             <div class="time">{{date('Y-m-d',strtotime($productionlist->created_at))}}</div>
                                         </div>
                                     </div>
@@ -104,7 +101,7 @@
                 <div class="item8content">
                     @foreach($topbrands as $index=>$topbrand)
                         <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                            <a href="/brand/{{$topbrand->id}}/">
+                            <a href="/index.php/brand/{{$topbrand->id}}/">
                                 <mip-img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}"></mip-img>
                                 <div class="item8listcontent">
                                     <div class="listtitle">{{$topbrand->brandname}}</div>

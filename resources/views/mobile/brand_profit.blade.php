@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="zhuanzai">
-                            <i></i>本篇文章为转载，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责，因内容、版权和其它问题，请及时和本站取得联系，我们将第一时间删除内容！
+                            <i></i>本篇文章并不代表本网赞同其观点和对其真实性负责，因内容、版权和其它问题，请及时和本站取得联系，我们将第一时间删除内容！
                         </div>
                     </div>
                     <div class="display" style="display: none;"><span>展开</span><i></i></div>
@@ -108,11 +108,11 @@
             <div class="item7content">
                 @foreach($brandnews as $brandnew)
                     <div class="item7list">
-                        <a href="/news/{{$brandnew->id}}/">
+                        <a href="/index.php/news/{{$brandnew->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$brandnew->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                     <div class="time">{{$brandnew->created_at}}</div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand/{{$topbrand->id}}/">
                             <img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}">
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

@@ -6,6 +6,28 @@
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/mobile/css/miparticle.css" rel="stylesheet" type="text/css"/>
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/mobile/css/mip_brand.css" rel="stylesheet" type="text/css"/>
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/frontend/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{{str_replace('www.','mip.',config('app.url'))}}{{Request::getrequesturi()}}",
+			"appid": "1589647661647643",
+            "title": "{{$thisarticleinfos->title}}",
+            "images": [@if(!empty($jsonpics))
+{!! $jsonpics !!}
+@else
+@if(isset($pics) && count($pics)>1)
+@foreach($pics as $pic)
+@if($loop->iteration<4)
+@if(str_contains($pic,'http'))"{{str_replace('www.','mip.',$pic)}}"@else "{{'http://mip.xiuxianshipin.com'.$pic}}"@endif @if($loop->iteration!=3),@endif
+@endif
+@endforeach
+@endif
+@endif
+],
+    "description": "{{str_replace('	','',str_replace(PHP_EOL,'',$thisarticleinfos->description))}}",
+            "pubDate": "{{str_replace(' ','T',$thisarticleinfos->created_at)}}"
+        }
+    </script>
 @stop
 @section('main_content')
     <div class="weizhi">
@@ -68,27 +90,7 @@
                                          $content=str_replace($match,str_replace(['/>','>'],['>','></mip-img>'],$match),$content);
                                      }
                                    }
-                                   $pattens=array(
-                                   "#<p>[\s| |　]?<strong>[\s| |　]?</strong></p>#",
-                                    "#<p>[\s| |　]?<strong>[\s| |　]+</strong></p>#",
-                                    "#<p>[\s| |　]+<strong>[\s| |　]+</strong></p>#",
-                                    "#<p>[\s| |　|\n\r]?<br/>[\s| |　|\n\r]?</p>#",
-                                    "#<p>[\s| |　|\n\r]+<br/>[\s| |　|\n\r]+</p>#",
-                                    "#<p>[\s| |　|\n\r]+<br />[\s| |　|\n\r]+</p>#",
-                                    "#<p><strong><br/></strong></p>#",
-                                    "#<p><strong><br /></strong></p>#",
-                                    "#<p><strong><br></strong></p>#",
-                                    "#<p><br></p>#",
-                                    "#<p><br ></p>#",
-                                    "#<p><br /></p>#",
-                                    "#<p>[\s| |　]?</p>#",
-                                    "#<p>[\s| |　]+</p>#",
-                                   "#　　#",
-                                   "#　#",
-                                   );
-                                   //dd($pattens);
-                                    $content=preg_replace($pattens,'',$content);
-                                    echo $content;
+                                   echo $content;
                                 @endphp
                             </div>
                             </mip-showmore>
@@ -110,15 +112,15 @@
             <div class="item7content">
                 @foreach($brandnews as $brandnew)
                 <div class="item7list">
-                    <a href="/news/{{$brandnew->id}}/">
+                    <a href="/index.php/news/{{$brandnew->id}}/">
                         <div class="left fl">
                             <div class="lefttitle">{{$brandnew->title}}</div>
                             <div class="text">
-                                <div class="message">编辑：中国休闲食品加盟网</div>
+                                <div class="message">编辑：树人教育加盟网</div>
                             </div>
                         </div>
                         <div class="right fr">
-                            <mip-img src="{{$brandnew->litpic}}"></mip-img>
+                            <mip-img @if($brandnew->litpic) src="{{$brandnew->litpic}}" alt="{{$brandnew->tite}}" @else src="/public/images/noimg.jpg" @endif ></mip-img>
                         </div>
                     </a>
                 </div>
@@ -134,7 +136,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand/{{$topbrand->id}}/">
                             <mip-img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}"></mip-img>
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

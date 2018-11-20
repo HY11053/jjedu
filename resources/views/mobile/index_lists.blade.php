@@ -1,5 +1,5 @@
 @extends('mobile.mobile')
-@section('title'){{$thistypeinfo->title}}-中国休闲食品加盟网@stop
+@section('title'){{$thistypeinfo->title}}-树人教育加盟网@stop
 @section('keywords'){{$thistypeinfo->keywords}} @stop
 @section('description'){{trim($thistypeinfo->description)}}@stop
 @section('headlibs')
@@ -17,7 +17,7 @@
             <ul>
                 @foreach($pagelists as $pagelist)
                     <li>
-                        <a href="/news/{{$pagelist->id}}/">
+                        <a href="/index.php/news/{{$pagelist->id}}/">
                             <div class="img_show"><img @if($pagelist->litpic) src="{{$pagelist->litpic}}" @else src="/images/012.jpg" @endif class="img_list" /></div>
                             <div class="cont">
                                 <p class="tit_1">{{$pagelist->title}}</p>
@@ -40,11 +40,11 @@
             <div class="item7content">
                 @foreach($latesenews as $latesenews)
                     <div class="item7list">
-                    <a href="/news/{{$latesenews->id}}/">
+                    <a href="/index.php/news/{{$latesenews->id}}/">
                         <div class="left fl">
                             <div class="lefttitle">{{$latesenews->title}}</div>
                             <div class="text">
-                                <div class="message">编辑：中国休闲食品加盟网</div>
+                                <div class="message">编辑：树人教育加盟网</div>
                             </div>
                         </div>
                         <div class="right fr">
@@ -64,7 +64,7 @@
             <div class="item8content">
                 @foreach($latestbrands as $index=>$latestbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$latestbrand->id}}/">
+                        <a href="/index.php/brand/{{$latestbrand->id}}/">
                             <img src="{{$latestbrand->litpic}}" alt="{{$latestbrand->brandname}}">
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$latestbrand->brandname}}</div>

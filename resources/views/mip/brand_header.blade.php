@@ -1,7 +1,7 @@
 <div id="item1">
     <div class="item1box">
         <div class="item1boxleft fl">
-            <div class="title"><h1>{{$thisarticleinfos->brandname}}</h1></div>
+            <div class="title"><h1>{{$thisarticleinfos->brandname}}加盟</h1></div>
             <div class="text">{{$thisarticleinfos->brandgroup}}</div>
             <div class="time"><span>{{date('Y-m-d',strtotime($thisarticleinfos->created_at))}}</span></div>
         </div>

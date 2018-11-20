@@ -3,9 +3,9 @@
         <i></i>
         <div class="title">在线留言</div>
         <form method="post" action="https://message.5988.com/index.php/my_ci/into/">
-        <input type="hidden" name="realm" value="www.51xxsp.com">
+        <input type="hidden" name="realm" value="www.xiuxianshipin.com">
         <input type="hidden" name="job" value="guestbook">
-        <input type="hidden" name="title" value="中国休闲食品加盟网">
+        <input type="hidden" name="title" value="树人教育加盟网">
         <input type="hidden" name="cla" value="
         @if(isset($thisarticleinfos))
                 @if($thisarticleinfos->brandname)
@@ -60,24 +60,35 @@
     </div>
 </div>
 
-@if(Jenssegers\Agent\Facades\Agent::isRobot())
-<div id='k_s_ol_inviteWin' class='ks_ol_comm_div' style='display: block; width: auto; z-index: 2147483647; left: 50%; margin-left: -140px; top: 50%; margin-top: -140px; visibility: visible; position: fixed !important; font-family:Microsoft YaHei; line-height:22px;'>
+@if(!Jenssegers\Agent\Facades\Agent::isRobot())
+<div id='k_s_ol_inviteWin' class='ks_ol_comm_div' style='display: none; width: auto; z-index: 2147483647; left: 50%; margin-left: -140px; top: 50%; margin-top: -140px; visibility: visible; position: fixed !important; font-family:Microsoft YaHei; line-height:22px;'>
     <div id='k_s_ol_inviteWin_fl'>
         <div style='width:280px; height:280px; background:url(/public/images/boxbj.png) top center no-repeat; background-size:280px auto;' align='center'>
             <div align='right'>
                 <div style='height:40px; width:40px; cursor:pointer;' onclick='abc()'></div>
             </div>
             <div style='padding-top:15px; text-align:center; font-size:14px; color:#444444;'>
-                <p>在线咨询零食量贩</p>
+                <p>在线咨询 @if(isset($thisarticleinfos))
+                        @if($thisarticleinfos->brandname)
+                            {{$thisarticleinfos->brandname}}
+                        @elseif ($thisarticleinfos->brandid)
+                            {{\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('brandname')}}
+                        @else
+                            {{$thisarticleinfos->title}}
+                        @endif
+                    @elseif(isset($thistypeinfo))
+                        {{$thistypeinfo->typename}}
+                    @else
+                    @endif </p>
                 <p>一对一专属服务</p>
             </div>
             <div style='padding-top:5px; padding-left:20px; line-height:32px; padding-right:20px; text-align:center; font-size:15px; font-weight:bold; color:#f4751e;'>品牌优势&nbsp;&nbsp;加盟费用&nbsp;&nbsp;近期优惠</div>
             <form  method="post" action="https://message.5988.com/index.php/my_ci/into/">
                 <div style='padding-top:10px;' align='center'>
                     <div align='center' style="font-size: .12rem;">
-                        <input name='realm' id='set_realm' value="m.51xxsp.com" type='hidden'>
+                        <input name='realm' id='set_realm' value="m.xiuxianshipin.com" type='hidden'>
                         <input name='job' id='set_job' value='guestbook' type='hidden'>
-                        <input name='title' id='set_title' value="中国休闲食品加盟网" type='hidden'>
+                        <input name='title' id='set_title' value="树人教育加盟网" type='hidden'>
                         <input name="cla" value=" @if(isset($thisarticleinfos))
                         @if($thisarticleinfos->brandname)
                         {{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}

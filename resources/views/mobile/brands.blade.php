@@ -1,5 +1,5 @@
 @extends('mobile.mobile')
-@section('title'){{$thistypeinfo->title}}-中国休闲食品加盟网@stop
+@section('title'){{$thistypeinfo->title}}-树人教育加盟网@stop
 @section('keywords'){{$thistypeinfo->keywords}} @stop
 @section('description'){{trim($thistypeinfo->description)}}@stop
 @section('headlibs')
@@ -101,11 +101,11 @@
             <div class="item7content">
                 @foreach($cnewslists as $cnewslist)
                     <div class="item7list">
-                        <a href="/news/{{$cnewslist->id}}/">
+                        <a href="/index.php/news/{{$cnewslist->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$cnewslist->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                 </div>
                             </div>
                             <div class="right fr">

@@ -17,31 +17,31 @@ class IndexController extends Controller
     function Index()
     {
         //幻灯底部推荐
-        $cbrands=Brandarticle::where('mid','1')->where('brandpsp','<>','')->where('flags','like','%c%')->take(4)->orderBy('click','desc')->get();
+        $cbrands=Brandarticle::whereIn('id',[112,124,44,5])->orderBy('click','desc')->get();
         //项目抢先看
         $hotbrandsearch=Brandarticle::where('mid','1')->latest()->take(5)->orderBy('click','desc')->get();
-        $ctbrand=Brandarticle::where('id',1247)->first();
+        $ctbrand=Brandarticle::where('id',113)->first();
         //精品推荐左侧
         $otbrands=Brandarticle::where('mid','1')->where('flags','like','%h%')->take(6)->orderBy('id','desc')->get();
         //精品推荐右侧
-        $cbrandrs=Brandarticle::where('mid','1')->whereIn('id',[1174,1099,67,46,1278,1193,8,427,244,1283])->orderBy('click','desc')->get();
+        $cbrandrs=Brandarticle::where('mid','1')->whereIn('id',[131,204,105,467,315,261,263,466,214,210])->orderBy('click','desc')->get();
         //新品上线
         $lbrand=Brandarticle::where('id',1283)->first();
         $latestbrandrs=Brandarticle::where('mid','1')->skip(5)->take(6)->orderBy('id','desc')->get();
         $latestbrands=Brandarticle::where('mid','1')->skip(11)->take(10)->orderBy('id','desc')->get();
         //项目大全
-        $clingshibrands=Brandarticle::whereIn('typeid',[7])->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
-        $flingshibrands=Brandarticle::whereIn('typeid',[7])->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
-        $alingshibrands=Brandarticle::whereIn('typeid',[7])->take(6)->latest()->get();
-        $chaohuobrands=Brandarticle::where('typeid',10)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
-        $fchaohuobrands=Brandarticle::where('typeid',10)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
-        $achaohuobrands=Brandarticle::where('typeid',10)->take(6)->latest()->get();
-        $cjinkoubrands=Brandarticle::where('typeid',8)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
-        $fjinkoubrands=Brandarticle::where('typeid',8)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
-        $ajinkoubrands=Brandarticle::where('typeid',8)->take(6)->latest()->get();
-        $cpenghuabrands=Brandarticle::where('typeid',11)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
-        $fpenghuabrands=Brandarticle::where('typeid',11)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
-        $apenghuabrands=Brandarticle::where('typeid',11)->take(6)->latest()->get();
+        $clingshibrands=Brandarticle::whereIn('typeid',[71])->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
+        $flingshibrands=Brandarticle::whereIn('typeid',[71])->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
+        $alingshibrands=Brandarticle::whereIn('typeid',[71])->take(6)->latest()->get();
+        $chaohuobrands=Brandarticle::where('typeid',70)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
+        $fchaohuobrands=Brandarticle::where('typeid',70)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
+        $achaohuobrands=Brandarticle::where('typeid',70)->take(6)->latest()->get();
+        $cjinkoubrands=Brandarticle::where('typeid',69)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
+        $fjinkoubrands=Brandarticle::where('typeid',69)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
+        $ajinkoubrands=Brandarticle::where('typeid',69)->take(6)->latest()->get();
+        $cpenghuabrands=Brandarticle::where('typeid',76)->where('flags','like','%'.'s'.'%')->take(3)->latest()->get();
+        $fpenghuabrands=Brandarticle::where('typeid',76)->where('flags','like','%'.'f'.'%')->take(3)->latest()->get();
+        $apenghuabrands=Brandarticle::where('typeid',76)->take(6)->latest()->get();
         //项目排行榜
         $paihangbangs=Arctype::where('mid','1')->where('topid','<>',0)->take(12)->orderBy('id','asc')->get();
         //推荐品牌**品牌招商
@@ -53,8 +53,8 @@ class IndexController extends Controller
         $fnew=Archive::where('flags','like','%a%')->first();
         //友情链接
         $flinks=flink::latest()->orderBy('created_at','desc')->take(30)->get();
-        $topnavs=Arctype::where('mid',1)->where('reid','<>',0)->take(6)->get();
-        $topnav2s=Arctype::where('mid',1)->where('reid','<>',0)->skip(6)->take(6)->get();
+        $topnavs=Arctype::where('mid',1)->where('reid','<>',0)->take(6)->orderBy('sortrank','desc')->get();
+        $topnav2s=Arctype::where('mid',1)->where('reid','<>',0)->skip(6)->take(6)->orderBy('sortrank','desc')->get();
         return view('frontend.index',compact('hotbrandsearch','flinks','cbrands','otbrands','cbrandrs','latestbrandrs','latestbrands','paihangbangs','cnews','cbrandlists',
         'canyinbrandlists','clingshibrands','flingshibrands','alingshibrands','chaohuobrands','fchaohuobrands','achaohuobrands','cjinkoubrands','fjinkoubrands','ajinkoubrands','cpenghuabrands',
         'fpenghuabrands','apenghuabrands','fnew','zhinannews','jingyingnews','topnavs','topnav2s','ctbrand','lbrand'));

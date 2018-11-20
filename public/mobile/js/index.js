@@ -1,3 +1,11 @@
+function abc(){
+    $('#k_s_ol_inviteWin').fadeOut(600).delay(35000).fadeIn(function(){openSwt();})
+}
+function openSwt() {
+    $("#k_s_ol_inviteWin").css('visibility','visible').fadeIn(600);
+}
+setTimeout(openSwt,15000);
+
 (function (doc, win) {
     var docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',

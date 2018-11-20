@@ -4,9 +4,9 @@
         <i></i>
         <div class="title">在线留言</div>
         <mip-form method="post" target="_self" url="https://message.5988.com/index.php/my_ci/into/">
-        <input type="hidden" name="realm" value="www.51xxsp.com">
+        <input type="hidden" name="realm" value="www.xiuxianshipin.com">
         <input type="hidden" name="job" value="guestbook">
-        <input type="hidden" name="title" value="中国休闲食品加盟网">
+        <input type="hidden" name="title" value="树人教育加盟网">
         <input type="hidden" name="cla" value="
         @if(isset($thisarticleinfos))
         @if($thisarticleinfos->brandname)

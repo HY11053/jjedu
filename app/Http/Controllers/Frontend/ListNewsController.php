@@ -12,8 +12,6 @@ use Carbon\Carbon;
 use App\Overwrite\Paginator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Routing\Route;
-use PhpParser\Node\Expr\PreDec;
 
 class ListNewsController extends Controller
 {
@@ -56,12 +54,12 @@ class ListNewsController extends Controller
                 $cnewslists=Archive::whereIn('brandid',Brandarticle::where('typeid',$typeid)->take(10)->latest()->pluck('id'))->take(10)->latest()->get();
             }
             $cid=preg_replace('/\/page\/[0-9]+/','',$path);
-            $pagelists=Brandarticle::whereIn('typeid',$typeids)->orwhere('typeid',$typeid)->latest()->distinct()->paginate($perPage = 32, $columns = ['*'], $pageName = 'page', $page);
+            $pagelists=Brandarticle::whereIn('typeid',$typeids)->orwhere('typeid',$typeid)->orderBy('id','desc')->distinct()->paginate($perPage = 10, $columns = ['*'], $pageName = 'page', $page);
             $pagelists= Paginator::transfer(
                 $cid,//传入分类id,
                 $pagelists//传入原始分页器
             );
-            $topbrandnavs=Arctype::where('mid',1)->where('reid','<>',0)->orderBy('id','asc')->get();
+            $topbrandnavs=Arctype::where('mid',1)->where('id','<>',14)->where('reid','<>',0)->orderBy('sortrank','desc')->get();
             $topbrands=Brandarticle::whereIn('typeid',$typeids)->orwhere('typeid',$typeid)->take(10)->orderBy('click','desc')->get();
             $flashlingshibrands=Brandarticle::where('mid','1')->where('flags','like','%'.'h'.'%')->take(7)->orderBy('id','desc')->get();
             $cbrands=Brandarticle::where('mid','1')->where('brandpsp','<>','')->where('flags','like','%c%')->take(4)->orderBy('click','desc')->get();
@@ -155,7 +153,7 @@ class ListNewsController extends Controller
         }, function ($query) use($thistypeinfo) {
             return $query->where('typeid',$thistypeinfo->id);
         })->paginate($perPage = 32, $columns = ['*'], $pageName = 'page', $page);
-        $topbrandnavs=Arctype::where('reid',6)->take(10)->get();
+        $topbrandnavs=Arctype::where('mid',1)->where('id','<>',14)->where('reid','<>',0)->orderBy('sortrank','desc')->get();
         $flashlingshibrands=Brandarticle::where('mid','1')->where('flags','like','%'.'c'.'%')->take(8)->orderBy('id','desc')->get();
         $cbrands=Brandarticle::where('mid','1')->where('brandpsp','<>','')->where('flags','like','%c%')->take(4)->orderBy('click','desc')->get();
         $hotbrandsearch=Brandarticle::where('mid','1')->latest()->take(5)->orderBy('click','desc')->get();

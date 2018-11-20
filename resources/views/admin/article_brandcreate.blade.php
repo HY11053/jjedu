@@ -250,7 +250,6 @@
                                     <div class="col-md-8 col-sm-9 col-xs-12">
                                         {{Form::text('brandduty', null, array('class' => 'form-control col-md-10','id'=>'brandduty','placeholder'=>'是否区域授权'))}}
                                         {{Form::hidden('mid', '1', array('class' => 'form-control col-md-10','id'=>'mid'))}}
-                                        {{Form::hidden('nid', '1', array('class' => 'form-control col-md-10','id'=>'nid'))}}
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">

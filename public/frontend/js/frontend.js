@@ -1,3 +1,15 @@
+var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+    },
+});
 $(function() {
     $(".rank-bar dd").hover(function() {
         $(this).addClass("show").siblings().removeClass("show")
@@ -83,4 +95,10 @@ $(function() {
         }
     }
     t(), o()
+})
+$(function () {
+    //快捷留言
+    $(".check_msg_bd li").click(function(){
+        $("#note").val($(this).text());
+    });
 })

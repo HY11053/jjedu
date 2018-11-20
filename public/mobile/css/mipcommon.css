@@ -90,7 +90,7 @@ footer .foot-text {    /*font-size: 0.16rem;*/    font-size: 7px;    color: #919
 .swiper-container  img {    width: 100%;    height: 3.5rem;}
 .search {    width: 100%;   top: 0;    z-index: 2;    /*background: transparent;*/    height: 0.84rem;    background: #dc0011;}
 .search .city,.search .message {    width: 16%;    height: 0.54rem;    margin-top: 0.15rem;}
-.search .city a img {    display: block;    width: 0.54rem;  max-width: 0.54rem; min-width: .54rem;  height: 0.47rem;    margin-left: 0.3rem;}
+.search .city a img {    display: block;    width: 0.54rem;  max-width: 0.54rem; min-width: .54rem;  height: 0.54rem;    margin-left: 0.3rem;}
 .search .city p {    color: #fff;    margin-top: -0.05rem;}
 .search .searchCon {    width: 68%;    float: left;    position: relative;    margin-top: 0.14rem;}
 .ipt-placeholder{    font-size: 0.2rem;    position: absolute;    left: .24rem;    top: 0;    color: #999;    height: 0.54rem;    line-height: 0.54rem; border: none;}
@@ -380,3 +380,230 @@ footer .foot-text {    /*font-size: 0.16rem;*/    font-size: 7px;    color: #919
 .link-box{padding-top:30px}
 .top{font-weight: bold;}
 .topleft{font-weight: normal;}
+
+.zxNavBarcon {
+    height: 1rem;
+    /* padding-left: 0.13333333rem;*/
+}
+.zxNavBarcon .zxHdImgcons {
+    background: #fff;
+    width: 56%;
+    height: 1rem;
+    float: left;
+    padding-top: 0.13333333rem;
+    -webkit-appearance:none;
+    border:0;
+}
+.zxNavBarcon .zxHdImgcons .zxHdImg {
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    border: 1px solid #dcdcdc;
+    float: left;
+}
+.zxNavBarcon .zxHdImgcons .zxHdImg img {
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+}
+.zxNavBarcon .zxHdImgcons .zxHdName-peo {
+    text-align: left;
+    font-size: 0.3rem;
+    line-height: 0.48rem;
+    color: #000;
+    padding-left: 0.13333333rem;
+    float: left;
+    color: red;
+}
+.zxNavBarcon .zxHdImgcons p {
+    text-align: left;
+    font-size: 0.3rem;
+    line-height: 0.20rem;
+    float: left;
+    color: #999;
+    margin-top: 0.06666667rem;
+    padding-left: 0.13333333rem;
+}
+.zxNavBarcon .zxHdImgcons p span {
+    display: block;
+    text-align: center;
+    border: 1px solid #d80000;
+    height: 0.25rem;
+    line-height: 0.30rem;
+    width: 1rem;
+    color: #d80000;
+    float: right;
+    margin-left: 0.13333333rem;
+    font-size: .25rem;
+}
+.zxNavBarcon .mfcall,
+.zxNavBarcon .mfcsain {
+    width: 22%;
+    height: 1rem;
+    font-size: 0.3rem;
+    color: #fff;
+    text-align: center;
+    float: left;
+    line-height: 1rem;
+    background: #D80000;
+    -webkit-appearance:none;
+    border:0;
+}
+.zxNavBarcon .mfcsain {
+    background: #33bd57;
+    float: right;
+}
+
+.coverTan{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background: rgba(74,74,74,0.3);
+    z-index:19999;
+}
+.lastCeng{
+    display: block;
+    position: fixed;
+    width: 94%;
+    left: 3%;
+    background:#fff;
+    height: 370px;
+    top: 9%;
+    opacity: 0.2;
+    border-radius: 16px;
+    z-index:20000;
+
+}
+
+.CengBox{
+    position: fixed;
+    width: 70%;
+    left: 15%;
+    background:#fff;
+    top: 10%;
+    height: 345px;
+    border-radius: 12px;
+    z-index:20001;
+}
+
+.CengBox .money{
+    display: block;
+    position: absolute;
+    top: -4px;
+    left: -5px;
+    width: 65px;
+    height: 65px;
+}
+.CengBox .top1{
+    height: 60px;
+    line-height: 78px;
+    text-align: center;
+    color: #333333;
+    font-family:'微软雅黑';
+    font-size:.35rem	}
+.CengBox .top2{
+    height: 13px;
+    line-height: 13px;
+    color: #666666;
+    text-align: center;
+    font-size: 12px;
+}
+.CengBox ul{
+    min-height: 100px;
+
+    width: 88%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.CengBox ul li{
+    height: 40px;
+    border: 1px solid #c0c5cb;
+    margin-bottom: 10px;
+    font-size: 0.6rem;
+    border-radius:4px;
+}
+.CengBox ul li p{
+    float: left;
+    line-height: 40px;
+    font-size: 14px;
+
+    overflow: hidden;
+}
+.CengBox ul li p label{
+
+    width: .7rem;
+    height: 40px;
+    float: left;
+}
+.CengBox ul li p input{
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    margin-top: .1rem;
+    font-size: 0.2rem;
+    display: inline;
+    line-height: .5rem;
+    width: 3.5rem;
+}
+.CengBox ul li:nth-child(1) p label{
+    background: url(../images/useName_01.png) no-repeat 10px center;
+    background-size: 26px 18px;
+}
+.CengBox ul li p .twoLabel{
+    width: 10px;
+    height: 40px;
+    background: url(../images/line_08.png) no-repeat 1px center!important;
+    background-size: 1px 18px!important;
+}
+.CengBox ul li:nth-child(2) p label{
+    background: url(../images/tell_03.png) no-repeat 10px center;
+    background-size: 26px 18px;
+}
+.CengBox ul li:nth-child(3) p label{
+    background: url(../images/dunpai_05.png) no-repeat 10px center;
+    background-size: 26px 18px;
+}
+.CengBox ul li:nth-child(4) p label{
+    background: url(../images/liuyan_07.png) no-repeat 10px center;
+    background-size: 26px 18px;
+}
+.CengBox .sure{    width: 88%; display: block; padding: 0px;    margin: 0 auto;}
+.CengBox .sure2{
+    width: 100%;
+    height: 40px;
+    background: #e44b46;
+    text-align: center;
+    line-height: 40px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 14px;
+    border-radius:4px;
+    border: none;
+}
+.chaaaa{
+    position: absolute;
+    width: 20px;
+    right: 10px;
+    height: 20px;
+    top: -36px;
+
+}
+.sexNa{
+    background: none!important;
+}
+#brand_name_UNM{color: #e44b46;}
+#brand_name_UNM2{color: #ccc;}
+#brand_name_UNM3{margin:0 3px;}
+#title_two_UNM{font-family:'微软雅黑';}
+#pin1{width:100%}
+#pin1in{width:66%}
+#pin2{float:right;}
+#pin2in{color:#737a7d;float:right;}
+#pin2in2{color:#737a7d;float:right;}
+#pin2in3{float:right;}
+.pin3{border:none;outline: none;}
+#pin4{height: 62px;}
+#pin4 textarea{ padding:8px 0 10px; width:82%;height: 58px;margin-top: 2px;border: none;resize:none;outline: none;font-size: 14px;line-height: 20px;}
+.lightbox{height: 450px;}

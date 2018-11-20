@@ -32,25 +32,28 @@ class ArticleController extends Controller
                 $hotnewslists=Archive::whereIn('brandid',Brandarticle::where('typeid',$brandtypeid)->pluck('id'))->where('brandid','<>',$thisarticleinfos->brandid)->take(10)->latest()->get();
                 $cnew=Archive::whereIn('brandid',Brandarticle::where('typeid',$brandtypeid)->pluck('id'))->where('brandid','<>',$thisarticleinfos->brandid)->latest()->first();
                 $xg_search=Archive::where('title','like','%'.$thisBrandArticle->brandname.'%')->take(10)->latest()->get();
+                $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisBrandArticle->typeid)->take(4)->orderBy('id','desc')->get();
             }else{
                 $hotnewslists=Archive::where('typeid',Arctype::where('id',Archive::where('id',$id)->value('typeid'))->value('id'))->where('flags','like','%c%')->take(10)->latest()->get();
                 $cnew=Archive::where('typeid',Arctype::where('id',Archive::where('id',$id)->value('typeid'))->value('id'))->where('flags','like','%c%')->latest()->first();
                 $topbrands=Brandarticle::where('mid','1')->take(10)->orderBy('click','desc')->get();
+                $xg_search=Archive::where('typeid',$thisarticleinfos->typeid)->take(10)->latest()->get();
+                $abrandlists=Brandarticle::where('mid','1')->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
             }
         }else{
             $hotnewslists=Archive::where('typeid',Arctype::where('id',Archive::where('id',$id)->value('typeid'))->value('id'))->where('flags','like','%c%')->take(10)->latest()->get();
             $cnew=Archive::where('typeid',Arctype::where('id',Archive::where('id',$id)->value('typeid'))->value('id'))->where('flags','like','%c%')->latest()->first();
             $topbrands=Brandarticle::where('mid','1')->take(10)->orderBy('click','desc')->get();
             $xg_search=Archive::where('typeid',$thisarticleinfos->typeid)->take(10)->latest()->get();
+            $abrandlists=Brandarticle::where('mid','1')->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         }
         $published=$thisarticleinfos->created_at;
         DB::table('archives')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
         $prev_article = Archive::latest('published_at')->find($this->getPrevArticleId($thisarticleinfos->id));
         $next_article = Archive::latest('published_at')->find($this->getNextArticleId($thisarticleinfos->id));
         $flashlingshibrands=Brandarticle::where('mid','1')->where('flags','like','%'.'c'.'%')->take(5)->orderBy('id','desc')->get();
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $latestnewslists=Archive::where('typeid',5)->take(4)->latest()->get();
-        $abrandlists=Brandarticle::where('mid','1')->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.article_article',compact('thisarticleinfos','thisBrandArticle','prev_article','next_article','xg_search','indexname','cnewslists','flashlingshibrands','hotnewslists','topbrands','latestnewslists','abrandlists','cnew'));
     }
 
@@ -71,7 +74,7 @@ class ArticleController extends Controller
         $latestbrands=Brandarticle::take(5)->orderBy('id','desc')->get();
         $published=$thisarticleinfos->created_at;
         DB::table('brandarticles')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $comments=Comment::where('archive_id',$thisarticleinfos->id)->where('is_hidden',0)->get();
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_article',compact('thisarticleinfos','pics','brandnews','topbrands','latesnews','indexname','latestbrands','comments','abrandlists'));
@@ -110,7 +113,7 @@ class ArticleController extends Controller
 
         $published=$thisarticleinfos->created_at;
         DB::table('brandarticles')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_production',compact('thisarticleinfos','productionlists','pid','productions','topbrands','pics','brandnews','latesnews','latestbrands','indexname','abrandlists'));
     }
@@ -135,7 +138,7 @@ class ArticleController extends Controller
         $latestbrands=Brandarticle::take(5)->orderBy('id','desc')->get();
         $published=$thisarticleinfos->created_at;
         DB::table('brandarticles')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $comments=Comment::where('archive_id',$thisarticleinfos->id)->where('is_hidden',0)->get();
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_company',compact('thisarticleinfos','pics','brandnews','topbrands','latesnews','indexname','latestbrands','comments','abrandlists'));
@@ -161,7 +164,7 @@ class ArticleController extends Controller
         $latestbrands=Brandarticle::take(5)->orderBy('id','desc')->get();
         $published=$thisarticleinfos->created_at;
         DB::table('brandarticles')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $comments=Comment::where('archive_id',$thisarticleinfos->id)->where('is_hidden',0)->get();
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_join',compact('thisarticleinfos','pics','brandnews','topbrands','latesnews','indexname','latestbrands','comments','abrandlists'));
@@ -188,7 +191,7 @@ class ArticleController extends Controller
         $latestbrands=Brandarticle::take(5)->orderBy('id','desc')->get();
         $published=$thisarticleinfos->created_at;
         DB::table('brandarticles')->where('id',$id)->update(['click'=>$thisarticleinfos->click+1,'published_at'=>$published]);
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $comments=Comment::where('archive_id',$thisarticleinfos->id)->where('is_hidden',0)->get();
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_profit',compact('thisarticleinfos','pics','brandnews','topbrands','latesnews','indexname','latestbrands','comments','abrandlists'));
@@ -217,7 +220,7 @@ class ArticleController extends Controller
             $cid,//传入分类id,
             $brandnews//传入原始分页器
         );
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         return view('frontend.brand_news',compact('thisarticleinfos','topbrands','pics','latesnews','brandnews','latestbrands','indexname','abrandlists'));
 
@@ -244,7 +247,7 @@ class ArticleController extends Controller
         $latestnewslists=Archive::take(9)->latest()->get();
         $abrandlists=Brandarticle::where('mid','1')->where('typeid',$thisarticleinfos->typeid)->where('flags','like','%'.'a'.'%')->take(4)->orderBy('id','desc')->get();
         $cnew=Archive::whereIn('brandid',Brandarticle::where('typeid',$brandtypeid)->pluck('id'))->where('brandid','<>',$thisarticleinfos->brandid)->latest()->first();
-        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'中国休闲食品加盟网';
+        $indexname=$thisarticleinfos->nid?'中国休闲食品加盟网':'树人教育加盟网';
         return view('frontend.article_production',compact('thisarticleinfos','cproductions','thisbrandinfo','productionlists','hproductions','indexname','topbrands','latestnewslists','flashlingshibrands','abrandlists','cnew'));
 
     }

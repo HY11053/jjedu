@@ -84,11 +84,11 @@
             <div class="item7content">
                 @foreach($brandnews as $brandnew)
                     <div class="item7list">
-                        <a href="/news/{{$brandnew->id}}/">
+                        <a href="/index.php/news/{{$brandnew->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$brandnew->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                 </div>
                             </div>
                             <div class="right fr">
@@ -108,7 +108,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand/{{$topbrand->id}}/">
                             <img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}">
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

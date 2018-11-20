@@ -1,85 +1,85 @@
 @extends('frontend.frontend')
-@section('title'){{$cid}}{{$tid}}{{$thistypeinfo->title}}-中国休闲食品加盟网@stop
+@section('title'){{$cid}}{{$tid}}{{$thistypeinfo->title}}-树人教育加盟网@stop
 @section('keywords'){{$thistypeinfo->keywords}} @stop
 @section('description'){{trim($thistypeinfo->description)}}@stop
 @section('headlibs')
-    <meta name="Copyright" content="中国休闲食品加盟网-{{env('APP_URL')}}"/>
-    <meta name="author" content="中国休闲食品加盟网" />
-    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
+    <meta name="Copyright" content="树人教育加盟网-{{env('APP_URL')}}"/>
+    <meta name="author" content="树人教育加盟网" />
+    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
     <link rel="canonical" href="{{config('app.url')}}{{str_replace('/index.php','',Request::getrequesturi())}}"/>
     <link rel="stylesheet" href="/frontend/css/index.css" />
     <link href="/frontend/css/list.css" rel="stylesheet" type="text/css" />
 @stop
 @section('main_content')
-    <!-- banner -->
-    <!-- banner -->
-    <div class="zong_banner mt20">
-        <div class="clear banWrap wrap_mar">
-            <ul class="banWrap_left pr fl">
-                <img style="margin: 8px" src="/frontend/images/212.png" alt="" />
-            </ul>
-            <!-- banner 中间 -->
-            <div class="jm-index clearfix">
-                <div class="fl">
-                    <div class="carousel carousel-bar1">
-                        <div class="ovh swiper-container">
-                            <ul class="ban-ul swiper-wrapper">
-                                <a target="_blank" href="/brand/7/" class="item img-block swiper-slide"><img src="/frontend/images/9be32109eec0417d8e474437ed7fb0ea.jpg" alt="良品铺子"></a>
-                                <a target="_blank" href="/brand/1062/" class="item img-block swiper-slide"><img src="/frontend/images/aebed277ee964c94bfeaa080c0e0c64a.jpg" alt="一扫光"></a>
-                            </ul>
-                        </div>
-                        <div class="dot">
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                    <dl class="fl char-type char-type-h172 mt20">
-                        @foreach($cbrands as $cbrand)
-                            <dd class="magnify @if(!$loop->last) mr20 @endif">
-                                <a target="_blank" href="/brand/{{$cbrand->id}}/" class="img-block magnify"><img src="{{$cbrand->indexpic}}" alt="" style="width:170px;height:170px">
-                                    <div class="txt">
-                                        <p class="f18">{{$cbrand->brandname}}</p>
-                                        <p class="f14">{{str_limit($cbrand->brandpsp,22,'...')}}</p>
-                                    </div>
-                                </a>
-                            </dd>
-                        @endforeach
-                    </dl>
-                </div>
-                <div class="fr xm-qingxian">
-                    <h2>项目抢先看</h2>
-                    <div class="carousel xm-carousel">
-                        <div class="ovh swiper-container">
-                            <ul class="ban-ul swiper-wrapper">
-                                @foreach($hotbrandsearch as $hotbrandsearch)
-                                    <li class="item swiper-slide">
-                                        <div style="padding:0 20px">
-                                            <img src="{{$hotbrandsearch->litpic}}" width="190" height="190">
-                                            <p class="f16"> {{$hotbrandsearch->brandname}}</p>
-                                            <p class="f14">
-                                                投资金额：<b class="s-oe">{{$hotbrandsearch->brandpay}}</b>
-                                            </p>
-                                            <p class="h72">{{$hotbrandsearch->description}}</p>
-                                            <div class="btn-bar">
-                                                <a target="_blank" href="/brand/{{$hotbrandsearch->id}}/" class="btn btn-oe-line fl">详细考察</a><a href="javascript:void(0);" class="btn btn-oe fr btn-wyzx">我要咨询</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
+    {{--  <!-- banner -->
+      <!-- banner -->
+      <div class="zong_banner mt20">
+          <div class="clear banWrap wrap_mar">
+              <ul class="banWrap_left pr fl">
+                  <img style="margin: 8px" src="/frontend/images/212.png" alt="" />
+              </ul>
+              <!-- banner 中间 -->
+              <div class="jm-index clearfix">
+                  <div class="fl">
+                      <div class="carousel carousel-bar1">
+                          <div class="ovh swiper-container">
+                              <ul class="ban-ul swiper-wrapper">
+                                  <a target="_blank" href="/brand/7/" class="item img-block swiper-slide"><img src="/frontend/images/9be32109eec0417d8e474437ed7fb0ea.jpg" alt="良品铺子"></a>
+                                  <a target="_blank" href="/brand/1062/" class="item img-block swiper-slide"><img src="/frontend/images/aebed277ee964c94bfeaa080c0e0c64a.jpg" alt="一扫光"></a>
+                              </ul>
+                          </div>
+                          <div class="dot">
+                              <div class="swiper-pagination"></div>
+                          </div>
+                      </div>
+                      <dl class="fl char-type char-type-h172 mt20">
+                          @foreach($cbrands as $cbrand)
+                              <dd class="magnify @if(!$loop->last) mr20 @endif">
+                                  <a target="_blank" href="/brand/{{$cbrand->id}}/" class="img-block magnify"><img src="{{$cbrand->indexpic}}" alt="" style="width:170px;height:170px">
+                                      <div class="txt">
+                                          <p class="f18">{{$cbrand->brandname}}</p>
+                                          <p class="f14">{{str_limit($cbrand->brandpsp,22,'...')}}</p>
+                                      </div>
+                                  </a>
+                              </dd>
+                          @endforeach
+                      </dl>
+                  </div>
+                  <div class="fr xm-qingxian">
+                      <h2>项目抢先看</h2>
+                      <div class="carousel xm-carousel">
+                          <div class="ovh swiper-container">
+                              <ul class="ban-ul swiper-wrapper">
+                                  @foreach($hotbrandsearch as $hotbrandsearch)
+                                      <li class="item swiper-slide">
+                                          <div style="padding:0 20px">
+                                              <img src="{{$hotbrandsearch->litpic}}" width="190" height="190">
+                                              <p class="f16"> {{$hotbrandsearch->brandname}}</p>
+                                              <p class="f14">
+                                                  投资金额：<b class="s-oe">{{$hotbrandsearch->brandpay}}</b>
+                                              </p>
+                                              <p class="h72">{{$hotbrandsearch->description}}</p>
+                                              <div class="btn-bar">
+                                                  <a target="_blank" href="/brand/{{$hotbrandsearch->id}}/" class="btn btn-oe-line fl">详细考察</a><a href="javascript:void(0);" class="btn btn-oe fr btn-wyzx">我要咨询</a>
+                                              </div>
+                                          </div>
+                                      </li>
+                                  @endforeach
 
-                            </ul>
-                        </div>
-                        <div class="dot">
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+                              </ul>
+                          </div>
+                          <div class="dot">
+                              <div class="swiper-pagination"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  --}}
 
     <div style="background-color: #f5f5f5;">
         <div class="w1200">
@@ -88,16 +88,16 @@
                 <dl class="c">
                     <dt>项目分类：</dt>
                     <dd>
-                        <a href="javascript:void(0);" data-id="" class="cur">不限</a>
+                        <a href="/blist/all/" data-id="" class="cur">不限</a>
                         @foreach($topbrandnavs as $topbrandnav)
-                            <a @if(Request::getrequesturi() =='/'.$topbrandnav->real_path.'/')class=" active" @endif href="{{config('app.url')}}/{{$topbrandnav->real_path}}/"  title="{{$topbrandnav->typename}}">{{$topbrandnav->typename}}</a>
+                            <a @if(Request::getrequesturi() =='/'.$topbrandnav->real_path.'/')class="cur" @endif href="{{config('app.url')}}/{{$topbrandnav->real_path}}/"  title="{{$topbrandnav->typename}}">{{$topbrandnav->typename}}</a>
                         @endforeach
                     </dd>
                 </dl>
                 <dl class="t">
                     <dt>投资金额：</dt>
                     <dd>
-                        <a href="javascript:void(0);" data-id="0" class="cur">不限</a>
+                        <a href="/{{$thistypeinfo->real_path}}_0_0_0/" rel="nofollow" data-id="0" class="cur">不限</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_1_0_0/"  title="3万以下">3万以下</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_2_0_0/"  title="3万~5万">3万~5万</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_3_0_0/"  title="5万~8万">5万~8万</a>
@@ -109,7 +109,7 @@
                 <dl class="c">
                     <dt>所需面积：</dt>
                     <dd>
-                        <a href="javascript:void(0);" data-id="" class="cur">不限</a>
+                        <a href="/{{$thistypeinfo->real_path}}_0_0_0/" rel="nofollow" data-id="" class="cur">不限</a>
                         <a  href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_0_1/">10平米以下</a>
                         <a  href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_0_2/">10-30平米</a>
                         <a  href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_0_3/">30-50平米</a>
@@ -120,7 +120,7 @@
                 <dl class="t">
                     <dt>所在地区：</dt>
                     <dd>
-                        <a href="javascript:void(0);" data-id="0" class="cur">不限</a>
+                        <a href="/{{$thistypeinfo->real_path}}_0_0_0/" rel="nofollow" data-id="0" class="cur">不限</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_2_0/"  title="北京">北京</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_3_0/"  title="安徽">安徽</a>
                         <a href="{{config('app.url')}}/{{$thistypeinfo->real_path}}_0_4_0/"  title="福建">福建</a>
@@ -166,8 +166,7 @@
                                 <a target="_blank" href="/brand/{{$pagelist->id}}/">{{$pagelist->brandname}}</a>
                             </div>
                             <div class="info">
-                                <span title="￥5.00-10.00万">投资金额：<b class="s-oe">{{$pagelist->brandpay}}</b></span><span title="{{$pagelist->acreage}}㎡">所需面积：<b class="s-oe">{{$pagelist->acreage}}㎡</b></span>
-                            </div>
+                                <span title="{{$pagelist->brandpay}}">投资金额：<b class="s-oe">{{$pagelist->brandpay}}</b></span><span title="{{\App\AdminModel\Acreagement::where('id',$pagelist->acreage)->value('type')}}㎡">所需面积：<b class="s-oe">{{\App\AdminModel\Acreagement::where('id',$pagelist->acreage)->value('type')}}㎡</b></span></div>
                             <p> 门店数量：<span class="s-c26">{{$pagelist->brandnum}}</span></p>
                             <p>加盟区域：<span class="s-c26">{{$pagelist->brandarea}}</span></p>
                             <p>主要产品：<span class="s-c26">{{$pagelist->brandmap}}</span></p>
@@ -202,7 +201,7 @@
 
                 <div class="bg-ff p20">
                     <div class="lh24">
-                        <a target="_blank" href="/jm/?c=chuanchuan" class="fr s-c999">更多</a>
+                        <a target="_blank" href="/blist/all/" class="fr s-c999">更多</a>
                         <h3 class="f22">{{$thistypeinfo->typename}}热门加盟项目</h3>
                     </div>
                     <ul class="join-project mt30">
@@ -218,7 +217,7 @@
                 </div>
                 <div class="bg-ff p20 mt20">
                     <div class="lh24">
-                        <a target="_blank" href="/jmzx/chuanchuan/" class="fr s-c999">更多</a>
+                        <a target="_blank" href="/bnlist/" class="fr s-c999">更多</a>
                         <h3 class="f22">加盟资讯</h3>
                     </div>
                     <ul class="tw-list tw-list-h84 mt15">

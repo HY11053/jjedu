@@ -30,7 +30,7 @@ class PaihangbangController extends Controller
         {
             $paihangbrands=Brandarticle::whereIn('typeid',$typeids)->take(100)->orderBy('click','desc')->get();
         }
-        $brandnavs=Arctype::where('reid',14)->get();
+        $brandnavs=Arctype::where('mid',1)->get();
         return view('frontend.paihangbang',compact('thistypeinfo','paihangbrands','brandnavs'));
     }
 }

@@ -1,5 +1,5 @@
 @extends('mip.mip')
-@section('title'){{$thistypeinfo->title}}-中国休闲食品加盟网@stop
+@section('title'){{$thistypeinfo->title}}-树人教育加盟网@stop
 @section('keywords'){{$thistypeinfo->keywords}} @stop
 @section('description'){{trim($thistypeinfo->description)}}@stop
 @section('headlibs')
@@ -62,7 +62,7 @@
         </div>
         <div class="bd">
             <ul>
-                @foreach($brandtops as $index=>$topbrand)
+                @foreach($topbrands as $index=>$topbrand)
                     @if($index<3)
                         <li>
                             <a href="{{str_replace('www.','mip.',config('app.url'))}}/index.php/brand/{{$topbrand->id}}/">
@@ -80,12 +80,12 @@
         </div>
         <div class="list">
             <ul>
-                @foreach($brandtops as $index=>$brandtop)
+                @foreach($topbrands as $index=>$topbrand)
 
                     @if($index>2)
                         <li>
-                            <a href="{{str_replace('www.','mip.',config('app.url'))}}/index.php/brand/{{$brandtop->id}}/">
-                                <i>{{$index+1}}</i><span>{{$brandtop->brandname}}</span><em>已有{{$brandtop->click}}人申请</em>
+                            <a href="{{str_replace('www.','mip.',config('app.url'))}}/index.php/brand/{{$topbrand->id}}/">
+                                <i>{{$index+1}}</i><span>{{$topbrand->brandname}}</span><em>已有{{$topbrand->click}}人申请</em>
                             </a>
                         </li>
                     @endif
@@ -101,16 +101,16 @@
             <div class="item7content">
                 @foreach($cnewslists as $cnewslist)
                     <div class="item7list">
-                        <a href="/news/{{$cnewslist->id}}/">
+                        <a href="/index.php/news/{{$cnewslist->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$cnewslist->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                     <div class="time">{{date('Y-m-d',strtotime($cnewslist->created_at))}}</div>
                                 </div>
                             </div>
                             <div class="right fr">
-                                <mip-img src="{{$cnewslist->litpic}}"></mip-img>
+                                <mip-img @if($cnewslist->litpic) src="{{$cnewslist->litpic}}" alt="{{$cnewslist->tite}}" @else src="/public/images/noimg.jpg" @endif ></mip-img>
                             </div>
                         </a>
                     </div>

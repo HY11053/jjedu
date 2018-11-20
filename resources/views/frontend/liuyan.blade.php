@@ -1,5 +1,5 @@
 <div class="zixun-bar ly_img mt40 stair-wz_new"><div class="img-block"><img src="/frontend/images/jm-step.jpg" alt=""></div></div>
-<div class="gbook" id="js_join_4">
+<div class="gbook" id="wyjm">
     <div class="hd">
         <span class="tit">给 <span style="font-weight: bold; color: #d71318">{{$thisarticleinfos->brandname}} </span>留言，立即获得最新加盟资料</span>
         <em>(24小时内获得企业的快速回复)</em>
@@ -9,9 +9,9 @@
     <div class="bd">
         <ul>
             <form method="post" action="https://message.5988.com/index.php/my_ci/into/">
-                <input type="hidden" name="realm" value="www.51xxsp.com">
+                <input type="hidden" name="realm" value="www.xiuxianshipin.com">
                 <input type="hidden" name="job" value="guestbook">
-                <input type="hidden" name="title" value="51加盟网">
+                <input type="hidden" name="title" value="树人教育加盟网">
                 <input type="hidden" name="cla" value="
 @if(isset($thisarticleinfos))
                 @if($thisarticleinfos->brandname)
@@ -33,7 +33,7 @@
                 @elseif ($thisarticleinfos->brandid)
                 {{\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('brandname')}}
                 @else
-                {{$thisarticleinfos->title}}
+                {{$thisarticleinfos->bdname}}
                 @endif
                 @elseif(isset($thistypeinfo))
                 {{$thistypeinfo->typename}}

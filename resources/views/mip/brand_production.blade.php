@@ -10,9 +10,9 @@
         {
             "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
             "@id": "{{str_replace('www.','mip.',config('app.url'))}}{{Request::getrequesturi()}}",
-			"appid": "1604312543022846",
-            "title": "{{$thisarticleinfos->title}}-{{$indexname}}",
-            "images": [ "@if(str_contains($thisarticleinfos->litpic,'http')){{str_replace('www.','mip.',$thisarticleinfos->litpic)}}@else {{'https://mip.51xxsp.com'.$thisarticleinfos->litpic}}@endif" ],
+			"appid": "1589647661647643",
+            "title": "{{$thisarticleinfos->title}}",
+            "images": [ "@if(str_contains($thisarticleinfos->litpic,'http')){{str_replace('www.','mip.',$thisarticleinfos->litpic)}}@else {{'http://mip.xiuanxianshipin.com'.$thisarticleinfos->litpic}}@endif" ],
 			"description": "{{$thisarticleinfos->description}}",
             "pubDate": "{{str_replace(' ','T',$thisarticleinfos->created_at)}}"
         }
@@ -71,14 +71,14 @@
                             <div class="jm_xq_con" id="pcontent">
                                 @foreach($productions as $production)
                                     <li>
-                                        <span><a href="/item/{{$production->id}}/"><mip-img width="200" height="200" src="{{$production->litpic}}" alt="{{$production->productionname}}"   title="{{$production->productionname}}"></mip-img></a></span>
-                                        <strong><a href="/item/{{$production->id}}/"  title="{{$production->productionname}}">{{$production->productionname}}</a></strong>
+                                        <span><a href="/index.php/item/{{$production->id}}/"><mip-img width="200" height="200" src="{{$production->litpic}}" alt="{{$production->productionname}}"   title="{{$production->productionname}}"></mip-img></a></span>
+                                        <strong><a href="/index.php/item/{{$production->id}}/"  title="{{$production->productionname}}">{{$production->productionname}}</a></strong>
                                     </li>
                                 @endforeach
                             </div>
                         </div>
                         <div class="zhuanzai">
-                            <i></i>本篇文章为转载，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责，因内容、版权和其它问题，请及时和本站取得联系，我们将第一时间删除内容！
+                            <i></i>本篇文章并不代表本网赞同其观点和对其真实性负责，因内容、版权和其它问题，请及时和本站取得联系，我们将第一时间删除内容！
                         </div>
                     </div>
                 </div>
@@ -93,16 +93,15 @@
             <div class="item7content">
                 @foreach($brandnews as $brandnew)
                     <div class="item7list">
-                        <a href="/news/{{$brandnew->id}}/">
+                        <a href="/index.php/news/{{$brandnew->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$brandnew->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
-                                    <div class="time">{{$brandnew->created_at}}</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                 </div>
                             </div>
                             <div class="right fr">
-                                <mip-img src="{{$brandnew->litpic}}"></mip-img>
+                                <mip-img @if($brandnew->litpic) src="{{$brandnew->litpic}}" alt="{{$brandnew->tite}}" @else src="/public/images/noimg.jpg" @endif ></mip-img>
                             </div>
                         </a>
                     </div>
@@ -118,7 +117,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand/{{$topbrand->id}}/">
                             <mip-img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}"></mip-img>
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

@@ -1,6 +1,5 @@
 @extends('mobile.mobile')
 @section('title'){{$thisarticleinfos->title}}-{{$indexname}}@stop
-@section('keywords') {{$thisarticleinfos->keywords}}@stop
 @section('description'){{$thisarticleinfos->description}}@stop
 @section('headlibs')
     <link href="/mobile/css/article.css" rel="stylesheet" type="text/css"/>
@@ -26,13 +25,13 @@
             <div id="item1">
                 <div class="item1box">
                     <div class="item1boxleft fl">
-                        <div class="title"><a href="/brand/{{$thisBrandArticle->id}}/">{{$thisBrandArticle->brandname}}</a></div>
+                        <div class="title"><a href="/index.php/brand/{{$thisBrandArticle->id}}/">{{$thisBrandArticle->brandname}}</a></div>
                         <div class="text">{{$thisBrandArticle->brandgroup}}</div>
                         <div class="time"><span>{{date('Y-m-d',strtotime($thisBrandArticle->created_at))}}</span></div>
                     </div>
                     <div class="item1boxmiddle fl">
                         <div class="top" style="font-weight: bold;">{{$thisBrandArticle->brandpay}}</div>
-                        <a href="/brand/{{$thisBrandArticle->id}}/#item5"><div class="bottom"></div></a>
+                        <a href="/index.php/brand/{{$thisBrandArticle->id}}/#item5"><div class="bottom"></div></a>
                     </div>
                     <div class="item1boxright fr clearfix">
                         <a href="#item5"><img class="js_popup" src="/mobile/images/liuyan.png" alt="在线留言"></a>
@@ -85,6 +84,70 @@
 
             <hr>
         </div>
+        @elseif($thisarticleinfos->brandname)
+        <div class="brandinfo">
+            <div id="item1">
+                <div class="item1box">
+                    <div class="item1boxleft fl">
+                        <div class="title"><a href="/index.php/news/{{$thisarticleinfos->id}}/">{{$thisarticleinfos->brandname}}</a></div>
+                        <div class="text">{{$thisarticleinfos->brandgroup}}</div>
+                        <div class="time"><span>{{date('Y-m-d',strtotime($thisarticleinfos->created_at))}}</span></div>
+                    </div>
+                    <div class="item1boxmiddle fl">
+                        <div class="top" style="font-weight: bold;">{{$thisarticleinfos->brandpay}}</div>
+                        <a href="/index.php/news/{{$thisarticleinfos->id}}/#item5"><div class="bottom"></div></a>
+                    </div>
+                    <div class="item1boxright fr clearfix">
+                        <a href="#item5"><img class="js_popup" src="/mobile/images/liuyan.png" alt="在线留言"></a>
+                        <div class="text">在线留言</div>
+                    </div>
+                </div>
+            </div>
+            <div id="focus" class="focus">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper" >
+                        @foreach(explode(',',$jsonpics) as $pic)
+                            <li class="swiper-slide" ><img src={!! $pic !!}></li>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div id="item3">
+                <div class="item3box">
+                    <ul class="title clearfix">
+                        <li class="tl">品牌地址：<span>{{$thisarticleinfos->country}}</span></li>
+                        <li class="tc">门店数目：<span>{{$thisarticleinfos->brandnum}}</span></li>
+                        <li class="tr">{{$thisarticleinfos->click}}人关注</li>
+                    </ul>
+                    <div class="top clearfix">
+                        <div class="topleft fl">
+                            <i></i>
+                            <p>注：{{$thisarticleinfos->brandname}}投资金额可能包含了加盟费、保证金、品牌使用费等其他相关费用，因此投资总额根据实际情况计算，相关费用解释请参考页面<a href="javascript:;" style="cursor: pointer;">底部小贴士</a>
+                            </p>
+                        </div>
+                        <div class="topright fr">
+                            <div class="item3boxbtn btn1 js_popup">
+                                <a href="#item5">立即咨询</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom clearfix">
+                        <div class="bottomleft fl">
+                        </div>
+                        <div class="bottomright fr">
+                            <a href="tel:400-8896-216">
+                                <div class="item3boxbtn btn2">
+                                    拨打电话
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        </div>
     @endif
      <div class="a_content">
         {!! $thisarticleinfos->body !!}
@@ -98,11 +161,11 @@
             <div class="item7content">
             @foreach($xg_search as $xg_article)
                 <div class="item7list">
-                    <a href="/news/{{$xg_article->id}}/">
+                    <a href="/index.php/news/{{$xg_article->id}}/">
                         <div class="left fl">
                             <div class="lefttitle">{{$xg_article->title}}</div>
                             <div class="text">
-                                <div class="message">来源：中国休闲食品加盟网</div>
+                                <div class="message">来源：树人教育加盟网</div>
                                 <div class="time">{{date('Y-m-d',strtotime($xg_article->created_at))}}</div>
                             </div>
                         </div>
@@ -125,7 +188,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand/{{$topbrand->id}}/">
                             <img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}">
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

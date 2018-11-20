@@ -6,6 +6,17 @@
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/mobile/css/miparticle.css" rel="stylesheet" type="text/css"/>
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/mobile/css/mip_brand.css" rel="stylesheet" type="text/css"/>
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/frontend/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+    <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "{{str_replace('www.','mip.',config('app.url'))}}{{Request::getrequesturi()}}",
+			"appid": "1589647661647643",
+            "title": "{{$thisarticleinfos->title}}",
+            "images": [ "@if(str_contains($thisarticleinfos->litpic,'http')){{str_replace('www.','mip.',$thisarticleinfos->litpic)}}@else {{'http://mip.xiuanxianshipin.com'.$thisarticleinfos->litpic}}@endif" ],
+			"description": "{{$thisarticleinfos->description}}",
+            "pubDate": "{{str_replace(' ','T',$thisarticleinfos->created_at)}}"
+        }
+    </script>
 @stop
 @section('main_content')
     <div class="weizhi">
@@ -54,11 +65,11 @@
             <div class="item7content">
                 @foreach($brandnews as $brandnew)
                     <div class="item7list">
-                        <a href="/news/{{$brandnew->id}}/">
+                        <a href="/index.php/news/{{$brandnew->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$brandnew->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                     <div class="time">{{$brandnew->created_at}}</div>
                                 </div>
                             </div>
@@ -79,7 +90,7 @@
             <div class="item8content">
                 @foreach($topbrands as $index=>$topbrand)
                     <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                        <a href="/brand/{{$topbrand->id}}/">
+                        <a href="/index.php/brand//{{$topbrand->id}}/">
                             <mip-img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}"></mip-img>
                             <div class="item8listcontent">
                                 <div class="listtitle">{{$topbrand->brandname}}</div>

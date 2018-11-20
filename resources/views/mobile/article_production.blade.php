@@ -35,7 +35,7 @@
 
                             <p>{{$thisarticleinfos->pdintr}}</p>
                         </div>
-                        <span><a href="#msg" class="cc_button1" title="">我要代理</a>@if(\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('id')) <a href="/brand/{{$thisarticleinfos->brandid}}/" class="cc_button2" title="">进入品牌网站</a> @endif</span>
+                        <span><a href="#msg" class="cc_button1" title="">我要代理</a>@if(\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('id')) <a href="/index.php/brand/{{$thisarticleinfos->brandid}}/" class="cc_button2" title="">进入品牌网站</a> @endif</span>
                     </div>
                 </div>
                 <div class="shuoming">
@@ -61,7 +61,7 @@
                             <div class="wrap swiper-container">
                                 <ul class="swiper-wrapper" >
                                     @foreach($cproductions as $cproduction)
-                                        <li class="swiper-slide"><span><a href="/item/{{$cproduction->id}}/" target="_self"><img src="{{$cproduction->litpic}}" title="{{$cproduction->productionname}}"></a></span></li>
+                                        <li class="swiper-slide"><span><a href="/index.php/item/{{$cproduction->id}}/" target="_self"><img src="{{$cproduction->litpic}}" title="{{$cproduction->productionname}}"></a></span></li>
                                     @endforeach
                                 </ul>
                                 <div class="swiper-pagination"></div>
@@ -80,11 +80,11 @@
                     <div class="item7content">
                         @foreach($productionlists as $productionlist)
                             <div class="item7list">
-                                <a href="/item/{{$productionlist->id}}/">
+                                <a href="/index.php/news/{{$productionlist->id}}/">
                                     <div class="left fl">
                                         <div class="lefttitle">{{$productionlist->title}}</div>
                                         <div class="text">
-                                            <div class="message">来源：中国休闲食品加盟网</div>
+                                            <div class="message">来源：树人教育加盟网</div>
                                             <div class="time">{{date('Y-m-d',strtotime($productionlist->created_at))}}</div>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                 <div class="item8content">
                     @foreach($topbrands as $index=>$topbrand)
                         <div class="item8list @if(($index+1)%2==0) fl @else fr @endif">
-                            <a href="/brand/{{$topbrand->id}}/">
+                            <a href="/index.php/brand/{{$topbrand->id}}/">
                                 <img src="{{$topbrand->litpic}}" alt="{{$topbrand->brandname}}">
                                 <div class="item8listcontent">
                                     <div class="listtitle">{{$topbrand->brandname}}</div>

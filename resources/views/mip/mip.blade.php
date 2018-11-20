@@ -21,7 +21,7 @@
 <div class="header clearfix mtop84">
     <div class="search clearfix">
         <div class="city fl">
-            <a href="/"><mip-img src="/mobile/images/nav-logo2.png" alt="中国休闲食品加盟网"></mip-img></a>
+            <a href="/"><mip-img src="/mobile/images/nav-logo2.png" alt="树人教育加盟网"></mip-img></a>
         </div>
         <div class="searchCon fl">
             <mip-form url="{{str_replace('www.','mip.',config('app.url'))}}/sprodlist/all/" target="_self" method="post">
@@ -39,32 +39,23 @@
                 <div class="mip-accordion-content d_nav">
                     <ul>
                         <li><a href="/" target="_self"><span>首页</span></a></li>
+                        <li><a href="/blist/all/" target="_self"><span>项目大全</span></a></li>
                         <li><a href="/nlist/1/" target="_self"><span>加盟指南</span></a></li>
                         <li><a href="/nlist/2/" target="_self"><span>投资分析</span></a></li>
-                        <li><a href="/nlist/3/" target="_self"><span>成功案例</span></a></li>
                         <li><a href="/nlist/4/" target="_self"><span>经营管理</span></a></li>
                         <li><a href="/bnlist/" target="_self"><span>品牌新闻</span></a></li>
-                        <li><a href="/blist/all/" target="_self"><span>品牌招商</span></a></li>
                         <li><a href="/paihangbang/" target="_self"><span>品牌排行榜</span></a></li>
                         <li>热门行业</li>
                         <li><a href="/blist/lingshi_1/" target="_self"><span>零食加盟</span></a></li>
-                        <li><a href="/blist/canyin_28/" target="_self"><span>餐饮</span></a></li>
-                        <li><a href="/blist/zhaji_29/" target="_self"><span>炸鸡</span></a></li>
-                        <li><a href="/blist/yinpin_30/" target="_self"><span>饮品</span></a></li>
-                        <li><a href="/blist/xiaochi_34/" target="_self"><span>小吃</span></a></li>
-                        <li><a href="/blist/suancaiyu/" target="_self"><span>酸菜鱼</span></a></li>
-                        <li><a href="/blist/mianshi/" target="_self"><span>面食</span></a></li>
-                        <li><a href="/ccx/" target="_self"><span>串串香</span></a></li>
-                        <li><a href="/shengjian/" target="_self"><span>生煎</span></a></li>
-                        <li><a href="/haixuan/" target="_self"><span>海鲜</span></a></li>
-                        <li><a href="/all/blist/canyin_28/blist/xiaolongxia/" target="_self"><span>小龙虾</span></a></li>
-                        <li><a href="/bingqilin/" target="_self"><span>冰淇淋</span></a></li>
-                        <li><a href="/biandang/" target="_self"><span>便当</span></a></li>
-                        <li><a href="/yuhuoguo/" target="_self"><span>鱼火锅</span></a></li>
-                        <li><a href="/boboyu/" target="_self"><span>啵啵鱼</span></a></li>
-                        <li><a href="/malatang/" target="_self"><span>麻辣烫</span></a></li>
-                        <li><a href="/rouxiebao/" target="_self"><span>肉蟹煲</span></a></li>
-                        <li><a href="/shaobing/" target="_self"><span>烧饼</span></a></li>
+                        <li><a href="/blist/jinkou_2/" target="_self"><span>进口零食加盟</span></a></li>
+                        <li><a href="/blist/douzhipin_3/" target="_self"><span>豆制品加盟</span></a></li>
+                        <li><a href="/blist/guoren_4/" target="_self"><span>干果店加盟</span></a></li>
+                        <li><a href="/blist/penghua_5/" target="_self"><span>膨化食品加盟</span></a></li>
+                        <li><a href="/blist/tangguo_6/" target="_self"><span>糖果加盟</span></a></li>
+                        <li><a href="/blist/roushi_7/" target="_self"><span>肉制品加盟</span></a></li>
+                        <li><a href="/blist/canyin_8/" target="_self"><span>餐饮加盟</span></a></li>
+                        <li><a href="/blist/tianpin_9/" target="_self"><span>甜品加盟</span></a></li>
+                        <li><a href="/blist/sort_10/" target="_self"><span>面馆加盟</span></a></li>
                         </li>
                     </ul>
                 </div>
@@ -73,16 +64,127 @@
     </div>
 </div>
 @yield('main_content')
+<mip-fixed type="bottom">
+    <div class="zxNavBar">
+        <div class="zxNavBarcon">
+            <button  role="button" tabindex="0"  id="btn-open" class="zxHdImgcons" >
+                <div class="zxHdImg">
+                    <mip-img src="/mobile/images/hdimg2.jpg" ></mip-img>
+                </div>
+                <div class="zxHdName">
+                    <div class="zxHdName-peo">
+                        @if(isset($thisarticleinfos))
+                            @if($thisarticleinfos->brandname)
+                                {{$thisarticleinfos->brandname}}
+                            @elseif ($thisarticleinfos->brandid)
+                                {{\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('brandname')}}
+                            @else
+                                {{$thisarticleinfos->bdname}}
+                            @endif
+                        @elseif(isset($thistypeinfo))
+                            {{$thistypeinfo->typename}}
+                        @else
+                            {{config('app.indexname')}}
+                        @endif
+                    </div>
+                    <p>品牌招商经理  <span>联系她</span></p>
+                </div>
+            </button>
+            <button  on="tap:my-lightbox.toggle" id="btn-open" role="button" tabindex="0" class="mfcall" >免费通话</button>
+            <button   on="tap:my-lightbox.toggle" id="btn-open2" role="button" tabindex="0" class="mfcsain" >立即咨询</button>
+        </div>
+    </div>
+</mip-fixed>
+<mip-lightbox
+        id="my-lightbox"
+        layout="nodisplay"
+        class="mip-hidden">
+    <div class="lightbox">
+        <div class="CengBox">
+            <mip-img src="/mobile/images/kai.png" class="money"></mip-img>
+            <mip-img  src="/mobile/images/cha.png" on="tap:my-lightbox.toggle" class="lightbox-close chaaaa"></mip-img>
+            <p class="top1">
+                        <span id="brand_name_UNM">@if(isset($thisarticleinfos))
+                                @if($thisarticleinfos->brandname)
+                                    {{$thisarticleinfos->brandname}}
+                                @elseif ($thisarticleinfos->brandid)
+                                    {{\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('brandname')}}
+                                @else
+                                    {{$thisarticleinfos->bdname}}
+                                @endif
+                            @elseif(isset($thistypeinfo))
+                                {{$thistypeinfo->typename}}
+                            @else
+                                品牌加盟
+                            @endif</span>
+                <span id="brand_name_UNM2">
+                        <span id="brand_name_UNM3">|</span></span>
+                <span id="title_one_UNM">开店方案</span></p>
+            <p class="top2"  id="title_two_UNM">手机验证，获取详细开店方案</p>
+            <mip-form method="post" target="_self" url="https://message.5988.com/index.php/my_ci/into/">
+                <ul>
+                    <li>
+                        <p id="pin1"><label for=""></label><input type="text" name="username" id="realname_UNM" placeholder="请输入您的称呼"></p>
+                    </li>
+                    <li>
+                        <p class=""><label for=""></label><input type="text" name="iphone" maxlength="11" class="tellTex pin3" id="mobile_UNM" placeholder="请输入手机号码"></p>
+                    </li>
+                    <li id="pin4">
+                        <p><label for=""></label></p>
+                        <textarea name="" rows="" name="note"  cols="" id="content_UNM" placeholder="我对此项目很感兴趣 请联系我"></textarea>
+                    </li>
+                    <input type="hidden" name="realm" value="www.xiuxianshipin.com">
+                    <input type="hidden" name="job" value="guestbook">
+                    <input type="hidden" name="title" value="树人教育加盟网">
+                    <input type="hidden" name="cla" value="
+        @if(isset($thisarticleinfos))
+                    @if($thisarticleinfos->brandname)
+                    {{\App\AdminModel\Arctype::where('id',$thisarticleinfos->typeid)->value('typename')}}
+                    @elseif ($thisarticleinfos->brandid)
+                    {{\App\AdminModel\Arctype::where('id',\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('typeid'))->value('typename')}}
+                    @else
+                    {{$thisarticleinfos->arctype->typename}}
+                    @endif
+                    @elseif(isset($thistypeinfo))
+                    {{$thistypeinfo->typename}}
+                    @else
+                            未知分类
+@endif
+                            ">
+                    <input type="hidden" name="combrand" value="
+        @if(isset($thisarticleinfos))
+                    @if($thisarticleinfos->brandname)
+                    {{$thisarticleinfos->brandname}}
+                    @elseif ($thisarticleinfos->brandid)
+                    {{\App\AdminModel\Brandarticle::where('id',$thisarticleinfos->brandid)->value('brandname')}}
+                    @else
+                    {{$thisarticleinfos->bdname}}
+                    @endif
+                    @elseif(isset($thistypeinfo))
+                    {{$thistypeinfo->typename}}
+                    @else
+                            未知分类
+@endif
+                            ">
+                    <input type="hidden" name="resolution" id="resolution">
+                </ul>
+                <div class="sure"><button type="submit" class="sure2">确定</button></div>
+            </mip-form>
+        </div>
+        <div class="clear"></div>
+    </div>
+</mip-lightbox>
+
 <footer>
     <div class="link-box ">
-        <a href="https://www.51xxsp.com/" class="foot-link">电脑版</a><span class="v-line">|</span>
+        <a href="http://www.xiuxianshipin.com/" class="foot-link">电脑版</a><span class="v-line">|</span>
         <a href="/blist/all/" class="foot-link">品牌招商</a><span class="v-line">|</span>
         <a href="/nlist/1/" class="foot-link">加盟指南</a><span class="v-line">|</span>
         <a href="/nlist/2/" class="foot-link">投资分析</a><span class="v-line">|</span>
         <a href="/nlist/4/" class="foot-link">经营管理</a>
     </div>
     <p class="firm clearfix">
-        <span class="foot-text mgr15">上海佐赛网络科技有限公司 版权所有</span>
+        <span class="foot-text mgr15">上海卡哇伊实业有限公司 版权所有</span>
     </p>
 </footer>
 <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
@@ -90,9 +192,11 @@
 <script src="https://c.mipcdn.com/static/v1/mip-accordion/mip-accordion.js"></script>
 <script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
 <script src="https://c.mipcdn.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-fixed/mip-fixed.js"></script>
 <script src="https://mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
-<mip-stats-baidu token="cda4731b3d498e848d0841266380eace"></mip-stats-baidu>
-
+<mip-stats-baidu token="363854924683c7a256f4a5d7e3a1197a"></mip-stats-baidu>
+<script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
+<mip-cambrian site-id="1589647661647643"></mip-cambrian>
 @yield('footlibs')
 </body>
 </html>

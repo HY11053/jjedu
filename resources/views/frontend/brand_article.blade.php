@@ -1,14 +1,14 @@
 @extends('frontend.frontend')
-@section('title'){{$thisarticleinfos->title}}-{{config('app.indexname')}}@stop
+@section('title'){{$thisarticleinfos->title}}-{{$indexname}}@stop
 @section('keywords'){{$thisarticleinfos->keywords}}@stop
 @section('description'){{trim($thisarticleinfos->description)}}@stop
 @section('headlibs')
 <meta name="Copyright" content="{{$indexname}}-{{config('app.url')}}"/>
     <meta name="author" content="{{$indexname}}" />
-    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
+    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
     <link rel="canonical" href="{{config('app.url')}}{{str_replace('/index.php','',Request::getrequesturi())}}"/>
     <meta property="og:type" content="article"/>
     <meta property="article:published_time" content="{{$thisarticleinfos->created_at}}+08:00" />
@@ -22,7 +22,7 @@
 @section('main_content')
     <div style="background-color: #f5f5f5;">
     <div class="w1200">
-        <div class="path"><p>当前位置：<a href="/" title="{{config('app.indexname')}}">{{config('app.indexname')}}</a>&gt; <a class="dq" href="{{config('app.url')}}/{{$thisarticleinfos->arctype->real_path}}/" title="{{$thisarticleinfos->arctype->typename}}">{{$thisarticleinfos->arctype->typename}}</a></p></div>
+        <div class="path"><p>当前位置：<a href="/">首页</a>&gt; <a class="dq" href="{{config('app.url')}}/{{$thisarticleinfos->arctype->real_path}}/" title="{{$thisarticleinfos->arctype->typename}}">{{$thisarticleinfos->arctype->typename}}</a></p></div>
         <div class="clearfix">
            @include('frontend.brand_info')
             <div class="fl w870 brand_left">
@@ -129,7 +129,7 @@
             <div class="fr w320">
                 <div class="plr20-tb15 mb20 bg-ff box-shadow ">
                     <div class="lh24">
-                        <a target="_blank" href="/jm/?c=chuanchuan" class="fr s-c999">更多</a>
+                        <a target="_blank" href="/blist/all/" class="fr s-c999">更多</a>
                         <h3 class="f22">{{$thisarticleinfos->arctype->typename}}热门加盟项目</h3>
                     </div>
                     <dl class="tu-list clearfix mt15" style="margin-top: 10px;">
@@ -167,7 +167,7 @@
 
                <div class="plr20-tb15 bg-ff box-shadow mt20">
                     <div class="lh24">
-                        <a target="_blank" href="/jm/?c=chuanchuan" class="fr s-c999">更多</a>
+                        <a target="_blank" href="/blist/all/" class="fr s-c999">更多</a>
                         <h3 class="f22">最新入驻品牌</h3>
                     </div>
                     <ul class="jm-xm-list mt5 mb10" style="margin-top: 10px;">
@@ -188,7 +188,7 @@
                 </div>
                 <div class="plr20-tb15 bg-ff box-shadow mt20" >
                     <div class="lh24" style="margin-bottom: 10px;">
-                        <a target="_blank" href="/jm/?c=chuanchuan" class="fr s-c999">更多</a>
+                        <a target="_blank" href="/bnlist/" class="fr s-c999">更多</a>
                         <h3 class="f22">最新品牌加盟新闻</h3>
                     </div>
                     @foreach($latesnews as $latesnew)
@@ -215,4 +215,45 @@
     </div>
     <div class="clear"></div>
     </div>
+@stop
+@section('footlibs')
+    <script type="text/javascript" src="/frontend/js/count.js"></script>
+
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+        var slideFlag=true;
+        var clickFlag=true;
+
+        $(".ico-quoted").click(function(){
+            $(".calculator_popup_mask,.calculator_popup").show();
+            clickFlag=false;
+        });
+
+        //关闭弹窗
+        $("#calculator_popup_close").click(function(){
+            $(".calculator_popup_mask,.calculator_popup").hide();
+            clickFlag=true;
+        });
+
+    </script>
+    <script>
+        function keyUp(e) {
+            var currKey=0,e=e||event;
+            currKey=e.keyCode||e.which||e.charCode;
+            var keyName = String.fromCharCode(currKey);
+            if(currKey==39)
+            {
+                window.location.href='http://www.xiuxianshipin.com/brand/{{\App\AdminModel\Brandarticle::where('id', '>', $thisarticleinfos->id)->min('id')}}/';
+            }else if(currKey==37){
+                window.location.href='http://www.xiuxianshipin.com/brand/{{\App\AdminModel\Brandarticle::where('id', '<', $thisarticleinfos->id)->max('id')}}/';
+            }
+        }
+        document.onkeyup = keyUp;
+    </script>
 @stop

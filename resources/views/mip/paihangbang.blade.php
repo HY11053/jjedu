@@ -1,7 +1,7 @@
 @extends('mip.mip')
-@section('title'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜_性价比最高的{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜-中国休闲食品加盟网@stop
-@section('keywords'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜,性价比最高的{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜,{{str_replace('加盟','',$thistypeinfo->typename)}}品牌排行@stop
-@section('description')中国休闲食品加盟网为您全方位解读{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌排行信息。分享{{str_replace('加盟','',$thistypeinfo->typename)}}门店信息，{{str_replace('加盟','',$thistypeinfo->typename)}}排行榜分类提供性价比最高{{str_replace('加盟','',$thistypeinfo->typename)}}品牌加盟排行榜信息，供你快速的选择适合自己的{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌，让您加盟无忧，顺利开店。快速解决创业致富难题。@stop
+@section('title'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜_火爆{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜-树人教育加盟网@stop
+@section('keywords'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜,火爆{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜,{{str_replace('加盟','',$thistypeinfo->typename)}}品牌排行@stop
+@section('description')树人教育加盟网为您全方位解读{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌排行信息。分享{{str_replace('加盟','',$thistypeinfo->typename)}}门店信息，{{str_replace('加盟','',$thistypeinfo->typename)}}排行榜分类提供性价比最高{{str_replace('加盟','',$thistypeinfo->typename)}}品牌加盟排行榜信息，供你快速的选择适合自己的{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌，让您加盟无忧，顺利开店。快速解决创业致富难题。@stop
 @section('headlibs')
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/mobile/css/miplist.css" rel="stylesheet" type="text/css"/>
     <link href="{{str_replace('www.','mip.',config('app.url'))}}/frontend/css/swiper.min.css" rel="stylesheet" type="text/css"/>

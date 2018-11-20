@@ -16,30 +16,27 @@ class ArticleTraslateController extends Controller
 
     public function getArticles()
     {
-        //$articles=DB::connection('51xxsp')->select('SELECT * FROM is_news  WHERE nid>? ',[0]);
-        $articles=DB::connection('xiuxianshipin')->select('SELECT * FROM is_news  WHERE nid> ?',[0]);
+        $articles=DB::connection('jiaoyu')->select('SELECT * FROM jiaoyu_archives  WHERE id> ?',[0]);
         foreach ($articles as $article)
         {
             $inserarticle=[];
-            $inserarticle['id']=$article->nid;
-            $inserarticle['typeid']=$article->nsort_id?:5;
-            $inserarticle['brandid']=$article->npro_id;
-            $inserarticle['title']=$article->nname;
-            $inserarticle['litpic']=$article->ncover;
-            $inserarticle['tags']=$article->ntag;
-            $inserarticle['keywords']=$article->nkeys;
-            $inserarticle['description']=$article->ndes;
-            $inserarticle['body']=$article->ncontent;
-            $inserarticle['click']=$article->ncount;
-            $inserarticle['flags']=$article->ncommend?'c':'';
-            $inserarticle['flags'].=$article->npoint?'a':'';
-            $inserarticle['flags'].=$article->nheadline?'h':'';
-            $inserarticle['ismake']=$article->checked;
+            $inserarticle['typeid']=2;
+            $inserarticle['brandid']=$article->brandid;
+            $inserarticle['title']=$article->title;
+            $inserarticle['litpic']=$article->litpic;
+            $inserarticle['tags']=$article->tags;
+            $inserarticle['keywords']=$article->keywords;
+            $inserarticle['description']=$article->description;
+            $inserarticle['body']=$article->body;
+            $inserarticle['click']=$article->click;
+            $inserarticle['flags']=$article->flags;
+            $inserarticle['ismake']=$article->ismake;
             $inserarticle['mid']=0;
             $inserarticle['write']='梁李良';
             $inserarticle['dutyadmin']=1;
-            $inserarticle['shorttitle']=$article->nname;
-            $inserarticle['created_at']=Carbon::createFromTimestamp($article->ntime,'PRC');;
+            $inserarticle['shorttitle']=$article->shorttitle;
+            $inserarticle['bdname']=$article->bdname;
+            $inserarticle['created_at']=Carbon::now();
             $inserarticle['updated_at']=$inserarticle['created_at'];
             $inserarticle['published_at']=$inserarticle['created_at'];
             Archive::create($inserarticle);
@@ -49,81 +46,77 @@ class ArticleTraslateController extends Controller
 
     public function getBrandArticles()
     {
-        //$articles=DB::connection('51xxsp')->select('SELECT * FROM is_news  WHERE nid>? ',[0]);
-        $articles=DB::connection('xiuxianshipin')->select('SELECT * FROM is_project  WHERE pid>?',[0]);
-        //dd($articles);
+        $articles=DB::connection('jiaoyu')->select('SELECT * FROM jiaoyu_brandarticles  WHERE id>?',[0]);
         foreach ($articles as $article)
         {
             $inserarticle=[];
-            $inserarticle['id']=$article->pid;
-            $inserarticle['typeid']=DB::connection('xiuxianshipin')->select('SELECT bsid FROM is_project_to_sort  WHERE bpid=?',[$article->pid])[0]->bsid;
-            //$inserarticle['brandid']=$article->npro_id;
-            $inserarticle['brandname']=$article->pname;
-            $inserarticle['tags']=$article->ptag;
-            $inserarticle['title']=$article->pname.'加盟_'.$article->pname.'加盟费用_'.$article->pname.'代理批发';
-            $inserarticle['keywords']=$article->pkeys;
-            $inserarticle['description']=$article->pdes;
-            $inserarticle['ismake']=$article->checked;
-            $inserarticle['body']=$article->pinfo;
-            $inserarticle['ppjs_content']=$article->pcom_intr;
-            $inserarticle['jmxq_content']=$article->pjoin;
-            $inserarticle['lrfx_content']=$article->profit;
-            $inserarticle['brandgroup']=$article->pcom_name;
-            $inserarticle['brandphone']=$article->pcom_tel;
-            $inserarticle['brandaddr']=$article->pcom_addr;
-            $inserarticle['imagepic']=\GuzzleHttp\json_decode($article->pics);
-            $inserarticle['imagepics']='';
-            for ($j=0;$j<count($inserarticle['imagepic']);$j++)
-            {
-                $inserarticle['imagepics'].=$inserarticle['imagepic'][$j].',';
-            }
-            $inserarticle['imagepics']=substr($inserarticle['imagepics'],0,-1);
-            $inserarticle['litpic']=$article->pcover;
-            $inserarticle['brandpsp']=str_limit($article->psp,300,'');
-            $inserarticle['country']=$article->pcity;
-            if ($article->plevel==1){
-                $brandpay='3万以下';
-            }elseif ($article->plevel==2)
-            {
-                $brandpay='3万~5万';
-
-            }elseif ($article->plevel==3){
-                $brandpay='5万~8万';
-            }elseif ($article->plevel==4){
-                $brandpay='8万~12万';
-            }elseif ($article->plevel==5){
-                $brandpay='12万~15万';
-            }elseif ($article->plevel==6){
-                $brandpay='15万以上';
-            }
-            $inserarticle['brandpay']=$brandpay;
-            $inserarticle['click']=$article->pcount;
-            $inserarticle['flags']=$article->pcommend?'c':'';
-            $inserarticle['flags'].=$article->ppoint?'a':'';
-            $inserarticle['flags'].=$article->pheadline?'h':'';
-            $inserarticle['flags'].=$article->ptopten?'s':'';
-            $inserarticle['mid']=1;
+            $inserarticle['typeid']=$article->typeid;
+            $inserarticle['ismake']=$article->ismake;
+            $inserarticle['click']=$article->click;
+            $inserarticle['title']=$article->title;
+            $inserarticle['shorttitle']=$article->shorttitle;
+            $inserarticle['flags']=$article->flags;
+            $inserarticle['tags']=$article->tags;
+            $inserarticle['country']=$article->country;
+            $inserarticle['mid']=$article->mid;
+            $inserarticle['keywords']=$article->keywords;
+            $inserarticle['description']=$article->description;
             $inserarticle['write']='梁李良';
-            $inserarticle['dutyadmin']=1;
-            $inserarticle['shorttitle']=$inserarticle['brandname'];
-            $inserarticle['created_at']=Carbon::createFromTimestamp($article->padd_time,'PRC');;
-            $inserarticle['updated_at']=$inserarticle['created_at'];
-            $inserarticle['published_at']=$inserarticle['created_at'];
-            //dd($inserarticle);
+            $inserarticle['litpic']=$article->litpic;
+            $inserarticle['dutyadmin']=$article->dutyadmin;
+            $inserarticle['body']=$article->body;
+            $inserarticle['brandname']=$article->brandname;
+            $inserarticle['brandtime']=$article->brandtime;
+            $inserarticle['brandorigin']=$article->brandorigin;
+            $inserarticle['brandnum']=$article->brandnum;
+            $inserarticle['brandpay']=$article->brandpay;
+            $inserarticle['brandarea']=$article->brandarea;
+            $inserarticle['brandmap']=$article->brandmap;
+            $inserarticle['brandperson']=$article->brandperson;
+            $inserarticle['brandattch']=$article->brandattch;
+            $inserarticle['brandapply']=$article->brandapply;
+            $inserarticle['brandchat']=$article->brandchat;
+            $inserarticle['brandgroup']=$article->brandgroup;
+            $inserarticle['brandaddr']=$article->brandaddr;
+            $inserarticle['brandduty']=$article->brandduty;
+            $inserarticle['imagepics']=$article->imagepics;
+            $inserarticle['acreage']=$article->acreage;
+            $inserarticle['genre']=$article->genre;
+            $inserarticle['licenseno']=$article->licenseno;
+            $inserarticle['registeredcapital']=$article->registeredcapital;
+            $inserarticle['decorationpay']=$article->decorationpay;
+            $inserarticle['quartersrent']=$article->quartersrent;
+            $inserarticle['equipmentcost']=$article->equipmentcost;
+            $inserarticle['workingcapital']=$article->workingcapital;
+            $inserarticle['laborquarter']=$article->laborquarter;
+            $inserarticle['miscellaneous']=$article->miscellaneous;
+            $inserarticle['dailyvolume']=$article->dailyvolume;
+            $inserarticle['unitprice']=$article->unitprice;
+            $inserarticle['watercoal']=$article->watercoal;
+            $inserarticle['brandpsp']=$article->brandpsp;
             Brandarticle::create($inserarticle);
-            //Archive::create($inserarticle);
-            //Addonarticle::create($inserarticle);
         }
-        Brandarticle::where('typeid',10)->update(['typeid'=>16]);
-        Brandarticle::where('typeid',9)->update(['typeid'=>15]);
-        Brandarticle::where('typeid',8)->update(['typeid'=>14]);
-        Brandarticle::where('typeid',7)->update(['typeid'=>13]);
-        Brandarticle::where('typeid',6)->update(['typeid'=>12]);
-        Brandarticle::where('typeid',5)->update(['typeid'=>11]);
-        Brandarticle::where('typeid',4)->update(['typeid'=>10]);
-        Brandarticle::where('typeid',3)->update(['typeid'=>9]);
-        Brandarticle::where('typeid',2)->update(['typeid'=>8]);
-        Brandarticle::where('typeid',1)->update(['typeid'=>7]);
+        Brandarticle::where('typeid',170)->update(['typeid'=>24]);
+        Brandarticle::where('typeid',169)->update(['typeid'=>23]);
+        Brandarticle::where('typeid',168)->update(['typeid'=>8]);
+        Brandarticle::where('typeid',167)->update(['typeid'=>10]);
+        Brandarticle::where('typeid',166)->update(['typeid'=>7]);
+        Brandarticle::where('typeid',165)->update(['typeid'=>22]);
+        Brandarticle::where('typeid',164)->update(['typeid'=>21]);
+        Brandarticle::where('typeid',163)->update(['typeid'=>13]);
+        Brandarticle::where('typeid',162)->update(['typeid'=>20]);
+        Brandarticle::where('typeid',161)->update(['typeid'=>19]);
+        Brandarticle::where('typeid',159)->update(['typeid'=>17]);
+        Brandarticle::where('typeid',158)->update(['typeid'=>9]);
+        Brandarticle::where('typeid',157)->update(['typeid'=>14]);
+        Brandarticle::where('typeid',156)->update(['typeid'=>16]);
+        Brandarticle::where('typeid',153)->update(['typeid'=>12]);
+        Brandarticle::where('typeid',152)->update(['typeid'=>15]);
+        Brandarticle::where('typeid',151)->update(['typeid'=>6]);
+        Brandarticle::where('typeid',150)->update(['typeid'=>5]);
+        Brandarticle::where('typeid',148)->update(['typeid'=>8]);
+        Brandarticle::where('typeid',147)->update(['typeid'=>4]);
+        Brandarticle::where('typeid',146)->update(['typeid'=>3]);
     }
 
     public function getarctypes()

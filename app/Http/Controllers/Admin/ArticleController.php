@@ -44,6 +44,16 @@ class ArticleController extends Controller
         $articles=Brandarticle::where('mid',1)->latest()->paginate(30);
         return view('admin.brandarticle',compact('articles'));
     }
+    /**品牌文档搜索
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function PostArticleBrandSearch(Request $request)
+    {
+        $articles=Brandarticle::withoutGlobalScope(PublishedScope::class)->where('title','like','%'.$request->input('title').'%')->latest()->paginate(30);
+        return view('admin.brandarticle',compact('articles'));
+    }
+
     /**普通文档创建
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

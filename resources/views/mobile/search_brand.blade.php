@@ -1,5 +1,5 @@
 @extends('mobile.mobile')
-@section('title')品牌搜索页-中国休闲食品加盟网@stop
+@section('title')品牌搜索页-树人教育加盟网@stop
 @section('keywords')品牌搜索页 @stop
 @section('description')品牌搜索页@stop
 @section('headlibs')

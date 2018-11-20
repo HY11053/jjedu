@@ -1,5 +1,5 @@
 @extends('mobile.mobile')
-@section('title'){{$cid}}{{$tid}}{{$zid}}{{$thistypeinfo->title}}-中国休闲食品加盟网@stop
+@section('title'){{$cid}}{{$tid}}{{$zid}}{{$thistypeinfo->title}}-树人教育加盟网@stop
 @section('keywords'){{$thistypeinfo->keywords}} @stop
 @section('description'){{trim($thistypeinfo->description)}}@stop
 @section('headlibs')
@@ -62,15 +62,15 @@
         </div>
         <div class="bd">
             <ul>
-                @foreach($brandtops as $index=>$brandtop)
+                @foreach($topbrands as $index=>$topbrand)
                     @if($index<3)
                         <li>
-                            <a href="{{str_replace('www.','m.',config('app.url'))}}/index.php/brand/{{$brandtop->id}}/">
-                                <div class="img_show"><img src="{{$brandtop->litpic}}"/></div>
+                            <a href="{{str_replace('www.','m.',config('app.url'))}}/index.php/brand/{{$topbrand->id}}/">
+                                <div class="img_show"><img src="{{$topbrand->litpic}}"/></div>
                                 <div class="cont">
-                                    <p class="tit">{{$brandtop->brandname}}</p>
-                                    <p class="desc">{{str_limit($brandtop->description,30,'...')}}</p>
-                                    <p class="price">投资金额：<em>￥{{$brandtop->brandpay}}</em></p>
+                                    <p class="tit">{{$topbrand->brandname}}</p>
+                                    <p class="desc">{{str_limit($topbrand->description,30,'...')}}</p>
+                                    <p class="price">投资金额：<em>￥{{$topbrand->brandpay}}</em></p>
                                 </div>
                             </a>
                         </li>
@@ -80,12 +80,12 @@
         </div>
         <div class="list">
             <ul>
-                @foreach($brandtops as $index=>$brandtop)
+                @foreach($topbrands as $index=>$topbrand)
 
                     @if($index>2)
                         <li>
-                            <a href="{{str_replace('www.','m.',config('app.url'))}}/index.php/brand/{{$brandtop->id}}/">
-                                <i>{{$index+1}}</i><span>{{$brandtop->brandname}}</span><em>已有{{$brandtop->click}}人申请</em>
+                            <a href="{{str_replace('www.','m.',config('app.url'))}}/index.php/brand/{{$topbrand->id}}/">
+                                <i>{{$index+1}}</i><span>{{$topbrand->brandname}}</span><em>已有{{$topbrand->click}}人申请</em>
                             </a>
                         </li>
                     @endif
@@ -101,11 +101,11 @@
             <div class="item7content">
                 @foreach($cnewslists as $cnewslist)
                     <div class="item7list">
-                        <a href="/news/{{$cnewslist->id}}/">
+                        <a href="/index.php/news/{{$cnewslist->id}}/">
                             <div class="left fl">
                                 <div class="lefttitle">{{$cnewslist->title}}</div>
                                 <div class="text">
-                                    <div class="message">编辑：中国休闲食品加盟网</div>
+                                    <div class="message">编辑：树人教育加盟网</div>
                                 </div>
                             </div>
                             <div class="right fr">

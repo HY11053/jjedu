@@ -1,14 +1,14 @@
 @extends('frontend.frontend')
-@section('title'){{$thistypeinfo->title}}-中国休闲食品加盟网@stop
-@section('keywords'){{$thistypeinfo->keywords}}@stop
-@section('description'){{$thistypeinfo->description}}@stop
+@section('title'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜_火爆{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜-树人教育加盟网@stop
+@section('keywords'){{str_replace('加盟','',$thistypeinfo->typename)}}加盟店排行榜,火爆{{str_replace('加盟','',$thistypeinfo->typename)}}加盟排行榜,{{str_replace('加盟','',$thistypeinfo->typename)}}品牌排行@stop
+@section('description')树人教育加盟网为您全方位解读{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌排行信息。分享{{str_replace('加盟','',$thistypeinfo->typename)}}门店信息，{{str_replace('加盟','',$thistypeinfo->typename)}}排行榜分类提供性价比最高{{str_replace('加盟','',$thistypeinfo->typename)}}品牌加盟排行榜信息，供你快速的选择适合自己的{{str_replace('加盟','',$thistypeinfo->typename)}}加盟品牌，让您加盟无忧，顺利开店。快速解决创业致富难题。@stop
 @section('headlibs')
-    <meta name="Copyright" content="中国休闲食品加盟网-{{env('APP_URL')}}"/>
-    <meta name="author" content="中国休闲食品加盟网" />
-    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
-    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('https://www.','https://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
+    <meta name="Copyright" content="树人教育加盟网-{{env('APP_URL')}}"/>
+    <meta name="author" content="树人教育加盟网" />
+    <meta http-equiv="mobile-agent" content="format=wml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=xhtml; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <meta http-equiv="mobile-agent" content="format=html5; url={{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" />
+    <link rel="alternate" media="only screen and(max-width: 640px)" href="{{str_replace('http://www.','http://m.',config('app.url'))}}/index.php{{str_replace('/index.php','',Request::getrequesturi())}}" >
     <link rel="canonical" href="{{config('app.url')}}{{str_replace('/index.php','',Request::getrequesturi())}}"/>
     <link rel="stylesheet" href="/frontend/css/article.css" />
     <link rel="stylesheet" href="/frontend/css/index.css" />
@@ -17,14 +17,14 @@
     <div id="ny_main">
         <div class="fenlei_jianjie">
             <div class="fenlei_jianjie_ph"></div>
-            <div class="fenlei_jianjie_c">	中国休闲食品加盟网综合排行榜是中国休闲食品加盟网推出的互联网加盟品牌排行榜。所有入驻中国休闲食品加盟网的优质品牌都将获得一定的排名。本次排名根据中国休闲食品加盟网用户的偏好等综合因素进行排名，系列加盟排行榜不作为官方和权威的行业排名，仅供投资者进行参考。中国休闲食品加盟网定期对所有餐饮品牌品牌进行排名，包括零食品牌排名榜、炸鸡品牌排行榜、便当服务品牌排行榜、小吃品牌排行榜等……中国休闲食品加盟网温馨提示:所有创业加盟项目及相关信息均来自互联网及用户自主添加，筛选品牌前务必进行实地考察和咨询。
+            <div class="fenlei_jianjie_c">	树人教育加盟网综合排行榜是树人教育加盟网推出的互联网加盟品牌排行榜。所有入驻树人教育加盟网的优质品牌都将获得一定的排名。本次排名根据树人教育加盟网用户的偏好等综合因素进行排名，系列加盟排行榜不作为官方和权威的行业排名，仅供投资者进行参考。树人教育加盟网定期对所有餐饮品牌品牌进行排名，包括零食品牌排名榜、炸鸡品牌排行榜、便当服务品牌排行榜、小吃品牌排行榜等……树人教育加盟网温馨提示:所有创业加盟项目及相关信息均来自互联网及用户自主添加，筛选品牌前务必进行实地考察和咨询。
             </div>
         </div>
         <div class="paihang_center">
-            <div class="path"><p>当前位置：<a href="/" title="中国休闲食品加盟网">中国休闲食品加盟网</a>&gt;<a class="dq" href="/paihangbang/" title="品牌排行榜">品牌排行榜</a></p></div>
+            <div class="path"><p>当前位置：<a href="/">首页</a>&gt;<a class="dq" href="/paihangbang/" title="品牌排行榜">品牌排行榜</a></p></div>
             <div class="paihang_left">
                 <div class="ph_l">
-                    <p class="tit">中国休闲食品加盟网排行榜</p>
+                    <p class="tit">树人教育加盟网排行榜</p>
                     <ul>
                         @foreach($brandnavs as $brandnav)
                             <li><a target="_self" href="/paihangbang/{{$brandnav->real_path}}/">{{$brandnav->typename}}品牌排行榜</a></li>
@@ -65,7 +65,7 @@
                                     <div class="iniconbox">
                                         <ul>
                                             <li class="xishu">门店总数{{$paihangbrand->brandnum}} </li>
-                                            <li class="renqi">加盟人气 {{$paihangbrand->click}}</li>
+                                            <li class="renqi" style="color: red">火爆指数 {{$paihangbrand->click}}</li>
                                             <li class="pinglun">品牌好评{{rand(95,99)}}%</li>
                                             <li class="zuopin">所需面积 {{\App\AdminModel\Acreagement::where('id',$paihangbrand->acreage)->value('type')}}㎡</li>
                                             <li class="taoxi">品牌发源地 {{$paihangbrand->brandorigin}}</li>
